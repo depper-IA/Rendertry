@@ -45,7 +45,7 @@ Rendertry/
 
 ---
 
-## ▶ Empezando
+## Empezando
 
 Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
 
