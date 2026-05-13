@@ -1,11 +1,11 @@
 <div align="center">
   <img src="src/assets/logos/logos.png" alt="Rendertry Logo" width="100"/>
-  <h1>🚗 Rendertry</h1>
+  <h1><img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/car.svg" width="28" height="28" align="top" /> Rendertry</h1>
   <p><strong>Visualizador Inmersivo de Personalización Automotriz</strong></p>
 
-  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
 
 </div>
 
@@ -15,37 +15,37 @@
 
 ---
 
-## ✨ Características Principales
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/sparkles.svg" width="24" height="24" align="top" /> Características Principales
 
-- 🏎️ **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
-- 🎨 **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
-- 🧩 **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
-- 📱 **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
-- ⚡ **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
+- <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/eye.svg" width="16" height="16" align="top" /> **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
+- <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/palette.svg" width="16" height="16" align="top" /> **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
+- <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/blocks.svg" width="16" height="16" align="top" /> **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
+- <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/smartphone.svg" width="16" height="16" align="top" /> **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
+- <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/zap.svg" width="16" height="16" align="top" /> **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
 
 ---
 
-## 📂 Estructura del Proyecto
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/folder-tree.svg" width="24" height="24" align="top" /> Estructura del Proyecto
 
 ```text
-📦 Rendertry
- ┣ 📂 src
- ┃ ┣ 📂 assets       # Imágenes, iconos y modelos (Rines, Autos)
- ┃ ┣ 📂 css          # Estilos del proyecto
- ┃ ┃ ┣ 📂 components # Módulos CSS (nav, hero, botones, etc.)
- ┃ ┃ ┣ 📜 base.css   # Variables y resets globales
- ┃ ┃ ┗ 📜 main.css   # Archivo centralizador de estilos
- ┃ ┣ 📂 js           # Lógica interactiva en JavaScript
- ┃ ┣ 📂 partials     # Componentes HTML reutilizables (Header, Footer)
- ┃ ┣ 📜 index.html   # Landing page y visor principal
- ┃ ┣ 📜 contacto.html
- ┃ ┗ 📜 nosotros.html
- ┗ 📜 README.md
+Rendertry/
+├── src/
+│   ├── assets/         # Imágenes, iconos y modelos (Rines, Autos)
+│   ├── css/            # Estilos del proyecto
+│   │   ├── components/ # Módulos CSS (nav, hero, botones, etc.)
+│   │   ├── base.css    # Variables y resets globales
+│   │   └── main.css    # Archivo centralizador de estilos
+│   ├── js/             # Lógica interactiva en JavaScript
+│   ├── partials/       # Componentes HTML reutilizables (Header, Footer)
+│   ├── index.html      # Landing page y visor principal
+│   ├── contacto.html   # Página de contacto
+│   └── nosotros.html   # Página sobre nosotros
+└── README.md
 ```
 
 ---
 
-## 🚀 Empezando
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/rocket.svg" width="24" height="24" align="top" /> Empezando
 
 Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
 
@@ -63,7 +63,7 @@ python -m http.server 8080 -d src
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## <img src="https://cdn.jsdelivr.net/npm/lucide-static@0.323.0/icons/wrench.svg" width="24" height="24" align="top" /> Tecnologías Utilizadas
 
 - **Marcado:** HTML5 Semántico
 - **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
