@@ -13,8 +13,8 @@ const loadPartials = async () => {
     const footerSlot = document.getElementById('site-footer');
 
     const results = await Promise.allSettled([
-        headerSlot ? fetch(base + 'header.html?v=' + new Date().getTime()).then(r => r.text()) : Promise.resolve(null),
-        footerSlot ? fetch(base + 'footer.html?v=' + new Date().getTime()).then(r => r.text()) : Promise.resolve(null),
+        headerSlot ? fetch(base + 'header.html').then(r => r.text()) : Promise.resolve(null),
+        footerSlot ? fetch(base + 'footer.html').then(r => r.text()) : Promise.resolve(null),
     ]);
 
     if (headerSlot && results[0].status === 'fulfilled' && results[0].value) {
