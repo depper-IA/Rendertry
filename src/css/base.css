@@ -44,6 +44,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.text-red {
+  color: var(--primary) !important;
+}
+
+.text-blue {
+  color: #3b82f6 !important;
+}
+
 h1,
 h2,
 h3,
