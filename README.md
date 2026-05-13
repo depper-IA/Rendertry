@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/depper-IA/Rendertry/main/src/assets/logos/logos.png" alt="Rendertry Logo" width="100"/>
+  <img src="https://raw.githubusercontent.com/depper-IA/Rendertry/main/src/assets/logos/logo.png" alt="Rendertry Logo" width="100"/>
   <h1>Rendertry</h1>
   <p><strong>Visualizador Inmersivo de Personalización Automotriz</strong></p>
 
