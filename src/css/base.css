@@ -1,0 +1,74 @@
+:root {
+  /* Rendertry Design System v3.0 — Dark Mode + Racing Red */
+  --bg-dark: #0a0c10;
+  /* Deep Obsidian */
+  --bg-card: #11151c;
+  /* Surface Card */
+  --bg-card-hover: #1a1f29;
+
+  /* Brand */
+  --primary: #e63946;
+  /* Racing Red */
+  --primary-hover: #b91c2c;
+  --secondary: #ffb347;
+  /* Warm Gold */
+  --accent-glow: rgba(230, 57, 70, 0.3);
+
+  /* Text */
+  --text-main: #f0f3f8;
+  --text-muted: #9aa3b5;
+
+  /* Structure */
+  --border-color: #1e293b;
+  --font-main: 'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
+
+  /* Effects */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Nav megamenu */
+  --nav-height: 70px;
+  --mega-bg: #0d1117;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+.sec-title,
+.hero-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+h4,
+h5 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}

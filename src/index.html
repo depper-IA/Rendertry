@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rendertry — Visualiza rines, pintura, wraps y accesorios en la foto de tu vehículo en segundos. Gratis. Sin registro." />
+  <title>Rendertry — Visualizador de Personalización Automotriz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/ferrari.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="row align-items-center">
+        <div class="col-lg-5 hero-text-col">
+          <div class="hero-text">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              IA Visual · Resultados Instantáneos
+            </div>
+            <h1 class="hero-title">
+              Tu auto,<br>tu visión.
+            </h1>
+            <p class="hero-sub">
+              Prueba rines, pintura, wraps y accesorios directamente sobre la foto de tu vehículo — en segundos, gratis, sin sorpresas en el taller.
+            </p>
+            <div class="hero-actions">
+              <a href="index.html#proceso" class="btn-primary btn-lg"><i data-lucide="zap" style="width:18px;height:18px;"></i>&nbsp;Probar gratis</a>
+              <a href="index.html#galeria" class="btn-ghost btn-lg">Ver galería</a>
+            </div>
+            <div class="hero-trust mt-4">
+              <span class="hero-trust-item"><i data-lucide="check-circle" style="width:14px;height:14px;color:#10b981;"></i>&nbsp;Sin registro</span>
+              <span class="hero-trust-sep"></span>
+              <span class="hero-trust-item"><i data-lucide="check-circle" style="width:14px;height:14px;color:#10b981;"></i>&nbsp;Descarga HD gratis</span>
+              <span class="hero-trust-sep"></span>
+              <span class="hero-trust-item"><i data-lucide="check-circle" style="width:14px;height:14px;color:#10b981;"></i>&nbsp;Resultados en &lt;30s</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="hero-visual-stage">
+            <div class="hero-glow"></div>
+            <img src="assets/ferrari.webp" alt="Auto deportivo" class="hero-car-massive" />
+            <div class="hero-rim-dock">
+              <div class="dock-header">
+                <span class="dock-title">Estilo de rines</span>
+                <span class="dock-live"><span class="live-dot"></span>Vista previa</span>
+              </div>
+              <div class="dock-list">
+                <div class="dock-item"><img src="assets/wheelblend/VOLK-TE37-BRONZE.png" alt="Volk TE37 Bronze"></div>
+                <div class="dock-item active">
+                  <img src="assets/wheelblend/BBS-E88.png" alt="BBS E88">
+                  <div class="dock-check"><i data-lucide="check" style="width:14px;height:14px;"></i></div>
+                </div>
+                <div class="dock-item"><img src="assets/wheelblend/HRE-HX101.png" alt="HRE HX101"></div>
+                <div class="dock-item"><img src="assets/wheelblend/ADVAN-GT.png" alt="Advan GT"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="assets/wheelblend/bbs.png" alt="BBS" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/hre.png" alt="HRE" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/volk.png" alt="Volk" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/rotiform.png" alt="Rotiform" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/advan.png" alt="Advan" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/work.png" alt="Work" class="marquee-logo"></div>
+      <!-- Duplicate for seamless scroll -->
+      <div class="marquee-item"><img src="assets/wheelblend/bbs.png" alt="BBS" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/hre.png" alt="HRE" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/volk.png" alt="Volk" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/rotiform.png" alt="Rotiform" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/advan.png" alt="Advan" class="marquee-logo"></div>
+      <div class="marquee-item"><img src="assets/wheelblend/work.png" alt="Work" class="marquee-logo"></div>
+    </div>
+  </div>
+
+  <section class="slider-section">
+    <div class="slider-wrapper" id="sliderWrapper">
+
+      <div class="slide active" data-bg="#f0f4ff">
+        <div class="slide-content">
+          <span class="slide-tag"><i data-lucide="disc-3" style="width:14px;height:14px;"></i> Porsche — Rines deportivos</span>
+          <h2>Porsche 911</h2>
+          <p>Icono de la ingenieria alemana. Visualiza rines deportivos, cambio de color y accesorios exclusivos para tu Porsche.</p>
+          <a href="#funcionalidades" class="btn-primary">Personalizar</a>
+        </div>
+        <div class="slide-visual">
+          <img src="assets/slider/porsche.jpg" alt="Porsche 911" class="slide-img" loading="eager" />
+        </div>
+      </div>
+
+      <div class="slide" data-bg="#f0f8f2">
+        <div class="slide-content">
+          <span class="slide-tag"><i data-lucide="car" style="width:14px;height:14px;"></i> BMW — Pintura y estilo</span>
+          <h2>BMW Serie M</h2>
+          <p>Potencia y elegancia en un solo auto. Explora acabados mate, metalicos y cromados para tu BMW antes de llevarlo al taller.</p>
+          <a href="#funcionalidades" class="btn-primary">Explorar colores</a>
+        </div>
+        <div class="slide-visual">
+          <img src="assets/slider/bmw.jpg" alt="BMW Serie M" class="slide-img" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="slide" data-bg="#fff5f7">
+        <div class="slide-content">
+          <span class="slide-tag"><i data-lucide="layers" style="width:14px;height:14px;"></i> Mercedes — Wraps y vinilos</span>
+          <h2>Mercedes-Benz</h2>
+          <p>Lujo redefinido. Aplica wraps de vinilo premium, disenos exclusivos y transforma tu Mercedes con total confianza.</p>
+          <a href="#funcionalidades" class="btn-primary">Ver disenos</a>
+        </div>
+        <div class="slide-visual">
+          <img src="assets/slider/mercedes_benz.jpg" alt="Mercedes-Benz" class="slide-img" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="slide" data-bg="#f3f6ff">
+        <div class="slide-content">
+          <span class="slide-tag"><i data-lucide="truck" style="width:14px;height:14px;"></i> SUV — Accesorios y tuning</span>
+          <h2>Camioneta 4x4</h2>
+          <p>Versatilidad sin limites. Personaliza tu camioneta con accesorios off-road, rines robustos y colores que dominan cualquier terreno.</p>
+          <a href="#funcionalidades" class="btn-primary">Ver accesorios</a>
+        </div>
+        <div class="slide-visual">
+          <img src="assets/slider/camioneta.jpeg" alt="Camioneta 4x4" class="slide-img" loading="lazy" />
+        </div>
+      </div>
+
+    </div>
+
+    <button class="slider-btn prev" id="sliderPrev" aria-label="Imagen anterior"><i data-lucide="chevron-left"></i></button>
+    <button class="slider-btn next" id="sliderNext" aria-label="Siguiente imagen"><i data-lucide="chevron-right"></i></button>
+
+    <div class="slider-dots" id="sliderDots">
+      <button class="dot active" data-index="0" aria-label="Ir a diapositiva 1"></button>
+      <button class="dot" data-index="1" aria-label="Ir a diapositiva 2"></button>
+      <button class="dot" data-index="2" aria-label="Ir a diapositiva 3"></button>
+      <button class="dot" data-index="3" aria-label="Ir a diapositiva 4"></button>
+    </div>
+  </section>
+
+  <section class="steps-section" id="proceso">
+    <div class="container">
+      <h2 class="text-center mb-5 sec-title">Así de fácil</h2>
+      <div class="steps-container">
+        <div class="step-card">
+          <h4>1. Sube tu imagen</h4>
+          <p>Agrega la foto de tu vehículo o el producto que quieras probar.</p>
+          <div class="upload-box">
+            <i data-lucide="upload-cloud" class="upload-icon"></i>
+            <p>Arrastra tu imagen aquí</p>
+            <button class="btn-primary btn-sm">Seleccionar imagen</button>
+          </div>
+        </div>
+        <div class="step-arrow">
+          <i data-lucide="arrow-right"></i>
+        </div>
+        <div class="step-card">
+          <h4>2. Elige el producto</h4>
+          <p>Selecciona el producto que quieres visualizar.</p>
+          <div class="rims-row">
+            <div class="rim-item-sm"><img src="assets/wheelblend/FIFTEEN52-TRAVERSE-BLACK.png" alt="Fifteen52"></div>
+            <div class="rim-item-sm active">
+              <img src="assets/wheelblend/ENKEI-RPF1-SILVER.png" alt="Enkei">
+              <div class="check-badge"><i data-lucide="check" style="width:12px;height:12px;"></i></div>
+            </div>
+            <div class="rim-item-sm"><img src="assets/wheelblend/WELD-S71.png" alt="Weld"></div>
+            <div class="rim-item-sm"><img src="assets/wheelblend/BBS-E88.png" alt="BBS"></div>
+          </div>
+        </div>
+        <div class="step-arrow">
+          <i data-lucide="arrow-right"></i>
+        </div>
+        <div class="step-card">
+          <h4>3. Visualiza el resultado</h4>
+          <p>Descarga o comparte tu imagen personalizada.</p>
+          <div class="result-box">
+            <img src="assets/wheelblend/1.jpg" alt="Resultado de personalización">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features-row">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-item">
+            <div class="feat-icon-box"><i data-lucide="zap"></i></div>
+            <div>
+              <h5 class="feat-title">Rápido y fácil</h5>
+              <p class="feat-desc">Resultados en segundos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-item">
+            <div class="feat-icon-box"><i data-lucide="shield"></i></div>
+            <div>
+              <h5 class="feat-title">Seguro</h5>
+              <p class="feat-desc">Tus imágenes están protegidas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-item">
+            <div class="feat-icon-box"><i data-lucide="cloud-download"></i></div>
+            <div>
+              <h5 class="feat-title">Descarga tu resultado</h5>
+              <p class="feat-desc">Guarda y comparte tu imagen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="fullbleed">
+    <img src="assets/fullbleed-car.jpg" alt="Porsche 911 deportivo" />
+    <div class="fullbleed-overlay">
+      <div class="container">
+        <div class="fullbleed-inner">
+          <div class="fullbleed-left">
+            <div class="fullbleed-eyebrow">
+              <span class="fb-dot"></span>
+              Personalización visual
+            </div>
+            <h2 class="fullbleed-title">
+              Ve los cambios<br>
+              <em>antes</em> de hacerlos
+            </h2>
+            <p class="fullbleed-sub">
+              Toma decisiones con confianza. Sin sorpresas en el taller,<br class="d-none d-lg-block"> sin arrepentimientos después.
+            </p>
+            <div class="fullbleed-actions">
+              <a href="#proceso" class="fb-btn-primary">
+                <i data-lucide="zap" style="width:16px;height:16px;"></i>
+                Probar gratis
+              </a>
+              <a href="#galeria" class="fb-btn-ghost">Ver galería</a>
+            </div>
+          </div>
+          <div class="fullbleed-stats">
+            <div class="fb-stat">
+              <span class="fb-num">100%</span>
+              <span class="fb-label">Visual</span>
+            </div>
+            <div class="fb-stat-divider"></div>
+            <div class="fb-stat">
+              <span class="fb-num">0</span>
+              <span class="fb-label">Riesgos</span>
+            </div>
+            <div class="fb-stat-divider"></div>
+            <div class="fb-stat">
+              <span class="fb-num">4+</span>
+              <span class="fb-label">Categorías</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER SLIDER -->
+  <section class="ba-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="eyebrow justify-content-center">Comparador visual</div>
+        <h2 class="sec-title">VE EL <span style="color:var(--primary)">ANTES Y DESPUÉS</span></h2>
+        <p class="sec-sub mx-auto">Arrastra el divisor para comparar el auto original con los rines personalizados.</p>
+      </div>
+      <div class="ba-wrapper" id="baWrapper">
+        <div class="ba-after">
+          <img src="assets/a-b/camioneta1.jpg" alt="Camioneta personalizada" />
+          <span class="ba-label ba-label-after">DESPUÉS</span>
+        </div>
+        <div class="ba-before" id="baBefore">
+          <img src="assets/a-b/camioneta0.jpg" alt="Camioneta original" />
+          <span class="ba-label ba-label-before">ANTES</span>
+        </div>
+        <div class="ba-handle" id="baHandle">
+          <div class="ba-line"></div>
+          <div class="ba-btn">
+            <i data-lucide="chevron-left" style="width:16px;height:16px;"></i>
+            <i data-lucide="chevron-right" style="width:16px;height:16px;"></i>
+          </div>
+          <div class="ba-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="funcionalidades">
+    <div class="container mb-5">
+      <div class="eyebrow">Funcionalidades</div>
+      <h2 class="sec-title">TODO LO QUE <span class="text-blue">NECESITAS</span></h2>
+      <p class="sec-sub">Herramientas de personalización pensadas para entusiastas del tuning y propietarios de vehículos.</p>
+    </div>
+    <div class="container-fluid px-0">
+      <div class="feat-grid">
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="camera" style="width:20px;height:20px;"></i></div>
+          <h5>Carga de imágenes</h5>
+          <p>Sube fotos en cualquier formato desde tu dispositivo. Almacenamiento seguro y privado garantizado.</p>
+        </div>
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="paintbrush" style="width:20px;height:20px;"></i></div>
+          <h5>Cambio de pintura</h5>
+          <p>Prueba cientos de colores de carrocería. Clasicos, mate, perla y cromado disponibles en el catalogo.</p>
+        </div>
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="disc-3" style="width:20px;height:20px;"></i></div>
+          <h5>Catalogo de rines</h5>
+          <p>Compara modelos y tamaños de rines para encontrar los que mejor se adaptan a tu estilo y vehículo.</p>
+        </div>
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
+          <h5>Wraps y vinilos</h5>
+          <p>Aplica diseños de vinilo completos o parciales. Texturas, patrones y colores sin límite creativo.</p>
+        </div>
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="package-plus" style="width:20px;height:20px;"></i></div>
+          <h5>Accesorios</h5>
+          <p>Agrega espoilers, retrovisores, detalles aerodinámicos y más para completar tu look personalizado.</p>
+        </div>
+        <div class="feat-cell">
+          <div class="feat-icon"><i data-lucide="download" style="width:20px;height:20px;"></i></div>
+          <h5>Descarga y comparte</h5>
+          <p>Exporta la imagen editada en alta resolución para compartirla o llevarla directo al taller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-sm" id="galeria" style="padding-top:0;">
+    <div class="container mb-4">
+      <div class="eyebrow">Galeria</div>
+      <h2 class="sec-title">AUTOS QUE <span class="text-blue">INSPIRAN</span></h2>
+    </div>
+    <div class="container-fluid px-0">
+      <div class="gallery">
+        <div class="gallery-item tall">
+          <img src="assets/wheelblend/studio-macro-dark.jpg" alt="Detalle macro oscuro" />
+          <div class="gallery-label">Acabado Premium — Dark Macro</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/wheelblend/aston-no-wheel.webp" alt="Aston Martin sin rines" />
+          <div class="gallery-label">Aston Martin — Visualización</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/wheelblend/aston-black-wheel.webp" alt="Aston Martin rines negros" />
+          <div class="gallery-label">Aston Martin — Black wheels</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/wheelblend/wheel-brands-hero.webp" alt="Entusiasta de autos" />
+          <div class="gallery-label">Selección — Las mejores marcas</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/wheelblend/studio-macro-light.jpg" alt="Estudio macro claro" />
+          <div class="gallery-label">Detalle — Iluminación de estudio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- TESTIMONIOS -->
+  <section class="section" id="testimonios" style="background: var(--bg-card); border-top:1px solid var(--border-color);">
+    <div class="container">
+      <div class="eyebrow">Testimonios</div>
+      <h2 class="sec-title mb-2">LO QUE DICEN <span style="color:var(--primary)">NUESTROS USUARIOS</span></h2>
+      <p class="sec-sub mb-5">Entusiastas reales. Resultados reales.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="story-card">
+            <div class="d-flex gap-1 mb-3" style="color:#f59e0b;">
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+            </div>
+            <p style="font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">&ldquo;Probé 6 juegos de rines distintos en 10 minutos. Fui al taller con la decisión tomada. Increíble herramienta.&rdquo;</p>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <img src="assets/wheelblend/avatar-1.jpg" alt="Carlos M." style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--border-color);">
+              <div><div style="font-weight:700;font-size:0.9rem;">Carlos M.</div><div style="font-size:0.75rem;color:var(--text-muted);">BMW Serie M — Medellín</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="story-card">
+            <div class="d-flex gap-1 mb-3" style="color:#f59e0b;">
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+            </div>
+            <p style="font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">&ldquo;Mis clientes llegan al taller con render en mano. Las ventas de rines subieron desde que uso StreetTuning para mostrar opciones.&rdquo;</p>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <img src="assets/wheelblend/avatar-2.jpg" alt="Taller AutoPro" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--border-color);">
+              <div><div style="font-weight:700;font-size:0.9rem;">Taller AutoPro</div><div style="font-size:0.75rem;color:var(--text-muted);">Bogotá, Colombia</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="story-card">
+            <div class="d-flex gap-1 mb-3" style="color:#f59e0b;">
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+              <i data-lucide="star" style="width:14px;height:14px;fill:#f59e0b;"></i>
+            </div>
+            <p style="font-size:0.95rem;line-height:1.7;margin-bottom:1.5rem;">&ldquo;Lo uso para mis reels de autos. El resultado queda tan real que mis seguidores no creen que es una edición digital.&rdquo;</p>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <img src="assets/wheelblend/avatar-3.jpg" alt="Laura V." style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--border-color);">
+              <div><div style="font-weight:700;font-size:0.9rem;">Laura V.</div><div style="font-size:0.75rem;color:var(--text-muted);">Creadora de contenido</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section class="section" id="precios">
+    <div class="container">
+      <div class="eyebrow">Precios</div>
+      <h2 class="sec-title mb-2">ELIGE TU <span style="color:var(--primary)">PLAN</span></h2>
+      <p class="sec-sub mb-5">Empieza gratis. Escala cuando lo necesites.</p>
+      <div class="row g-4 justify-content-center">
+        <!-- Free -->
+        <div class="col-md-4">
+          <div class="pricing-card">
+            <div class="pricing-badge">Gratis</div>
+            <h3 class="pricing-name">Básico</h3>
+            <div class="pricing-price">$0<span>/mes</span></div>
+            <p class="pricing-desc">Perfecto para explorar la plataforma.</p>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> 5 renders al mes</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Catálogo básico de rines</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Descarga en HD</li>
+              <li><i data-lucide="x" style="width:14px;height:14px;color:var(--text-muted);"></i> <span style="color:var(--text-muted)">Sin marca de agua — Pro</span></li>
+              <li><i data-lucide="x" style="width:14px;height:14px;color:var(--text-muted);"></i> <span style="color:var(--text-muted)">Wraps y vinilos — Pro</span></li>
+            </ul>
+            <a href="#proceso" class="btn-ghost w-100 d-block text-center" style="padding:0.8rem;">Empezar gratis</a>
+          </div>
+        </div>
+        <!-- Pro -->
+        <div class="col-md-4">
+          <div class="pricing-card pricing-featured">
+            <div class="pricing-badge pricing-badge-pro">Más popular</div>
+            <h3 class="pricing-name">Pro</h3>
+            <div class="pricing-price">$49.900<span>/mes</span></div>
+            <p class="pricing-desc">Para entusiastas y talleres.</p>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Renders ilimitados</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Catálogo completo +200 rines</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Descarga 4K sin marca de agua</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Wraps, vinilos y accesorios</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Soporte prioritario</li>
+            </ul>
+            <a href="#proceso" class="btn-primary w-100 d-block text-center" style="padding:0.8rem;">Comenzar — 7 días gratis</a>
+          </div>
+        </div>
+        <!-- Business -->
+        <div class="col-md-4">
+          <div class="pricing-card">
+            <div class="pricing-badge">Equipos</div>
+            <h3 class="pricing-name">Business</h3>
+            <div class="pricing-price">$149.900<span>/mes</span></div>
+            <p class="pricing-desc">Para talleres y negocios de rines.</p>
+            <ul class="pricing-features">
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Todo lo de Pro</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Hasta 10 usuarios</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Panel de gestión de clientes</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Acceso a API</li>
+              <li><i data-lucide="check" style="width:14px;height:14px;color:#10b981;"></i> Soporte dedicado 24/7</li>
+            </ul>
+            <a href="#" class="btn-ghost w-100 d-block text-center" style="padding:0.8rem;">Contactar ventas</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIAS / CASOS DE USO -->
+  <section class="section" id="historias" style="background: var(--bg-card); border-top:1px solid var(--border-color);">
+    <div class="container">
+      <div class="eyebrow">Casos de uso</div>
+      <h2 class="sec-title mb-5">PARA <span style="color:var(--primary)">CADA PERFIL</span></h2>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="user" style="width:13px;height:13px;"></i>&nbsp;Entusiasta</div>
+            <h5>Prueba rines antes de comprar</h5>
+            <p>Visualiza diferentes estilos y tamaños de rines sobre tu vehículo antes de invertir en el taller.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="paintbrush" style="width:13px;height:13px;"></i>&nbsp;Propietario</div>
+            <h5>Cambia el color de tu auto</h5>
+            <p>Evalúa colores clásicos, mate, perla o cromado. Toma la decisión correcta antes de pintarlo.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="layers" style="width:13px;height:13px;"></i>&nbsp;Creativo</div>
+            <h5>Aplica wraps y vinilos</h5>
+            <p>Prueba wraps de vinilo completos o parciales. Texturas, patrones y colores sin límite.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="wrench" style="width:13px;height:13px;"></i>&nbsp;Taller</div>
+            <h5>Presenta propuestas visuales</h5>
+            <p>Muestra a tus clientes cómo quedarán las modificaciones antes de comenzar el trabajo.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="store" style="width:13px;height:13px;"></i>&nbsp;Negocio</div>
+            <h5>Vende más con visualizaciones</h5>
+            <p>Negocios de rines y accesorios pueden mostrar el producto montado en el auto del cliente.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="story-card">
+            <div class="story-num"><i data-lucide="video" style="width:13px;height:13px;"></i>&nbsp;Creador</div>
+            <h5>Contenido que impacta</h5>
+            <p>Genera builds visuales para redes sociales que parecen renders profesionales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="cta-final">
+    <div class="cta-final-bg"></div>
+    <div class="cta-grid-overlay"></div>
+    <div class="container cta-final-content">
+      <div class="cta-inner">
+
+        <div class="cta-left">
+          <div class="cta-badge">
+            <span class="cta-badge-dot"></span>
+            Empieza hoy — es gratis
+          </div>
+          <h2 class="cta-title">
+            Tu auto,<br>
+            tu <span class="cta-highlight">visión.</span>
+          </h2>
+          <p class="cta-sub">
+            Visualiza el auto de tus sueños antes de invertir un solo peso.
+            Sin riesgos. Sin sorpresas.
+          </p>
+          <div class="cta-actions">
+            <a href="#" class="cta-btn-main">
+              <i data-lucide="rocket" style="width:17px;height:17px;"></i>
+              Crear cuenta gratis
+            </a>
+            <a href="#proceso" class="cta-btn-link">
+              Ver cómo funciona
+              <i data-lucide="arrow-right" style="width:15px;height:15px;"></i>
+            </a>
+          </div>
+          <div class="cta-trust">
+            <div class="cta-trust-item">
+              <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
+              Sin tarjeta de crédito
+            </div>
+            <div class="cta-trust-sep"></div>
+            <div class="cta-trust-item">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i>
+              Resultados en segundos
+            </div>
+            <div class="cta-trust-sep"></div>
+            <div class="cta-trust-item">
+              <i data-lucide="download" style="width:14px;height:14px;"></i>
+              Descarga HD gratis
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-right">
+          <div class="cta-card-stack">
+            <div class="cta-card cta-card-back">
+              <img src="assets/gallery-porsche.jpg" alt="Porsche" class="cta-card-img" />
+              <div class="cta-card-label">Porsche 911 — Rines deportivos</div>
+            </div>
+            <div class="cta-card cta-card-front">
+              <img src="assets/ferrari.webp" alt="Ferrari" class="cta-card-img" />
+              <div class="cta-card-label">Ferrari — Pintura personalizada</div>
+              <div class="cta-card-badge">
+                <i data-lucide="check-circle-2" style="width:13px;height:13px;"></i>
+                Vista previa lista
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
