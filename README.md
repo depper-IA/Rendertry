@@ -15,13 +15,13 @@
 
 ---
 
-## ✦ Características Principales
+## ❖ Características Principales
 
-- 🔸 **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
-- 🔸 **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
-- 🔸 **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
-- 🔸 **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
-- 🔸 **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
+-  **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
+-  **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
+-  **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
+-  **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
+-  **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
 
 ---
 
@@ -45,7 +45,7 @@ Rendertry/
 
 ---
 
-## Empezando
+## ❖ Empezando
 
 Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
 
@@ -63,7 +63,7 @@ python -m http.server 8080 -d src
 
 ---
 
-## Tecnologías Utilizadas
+## ❖ Tecnologías Utilizadas
 
 - **Marcado:** HTML5 Semántico
 - **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
