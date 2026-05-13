@@ -63,7 +63,7 @@ python -m http.server 8080 -d src
 
 ---
 
-## ⚙ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Marcado:** HTML5 Semántico
 - **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
