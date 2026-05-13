@@ -1,37 +1,79 @@
-# Rendertry
+<div align="center">
+  <img src="src/assets/logos/logos.png" alt="Rendertry Logo" width="100"/>
+  <h1>🚗 Rendertry</h1>
+  <p><strong>Visualizador Inmersivo de Personalización Automotriz</strong></p>
 
-Rendertry is a modernized web platform featuring an immersive vehicle visualization stage, professional branding, and a highly responsive design.
+  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-## Features
-- **Immersive Visuals**: High-impact hero banner with an interactive vehicle visualization stage.
-- **Modern UI/UX**: Professional "Dark Mode" aesthetic with "Racing Red" accents.
-- **Modular CSS Architecture**: Highly maintainable, component-based CSS structure.
-- **Fully Responsive**: Optimized for desktop, laptop, tablet, and mobile breakpoints.
-- **Dynamic Interactions**: Smooth scroll animations, interactive floating rim dock, and dynamic sliders.
+</div>
 
-## Project Structure
-- `/src` - Source files (HTML, CSS, JS, assets)
-  - `/src/css/main.css` - Centralized stylesheet importing modular components.
-  - `/src/css/components/` - Modular CSS files (nav, hero, buttons, etc.)
-  - `/src/js/` - JavaScript logic for interactive components.
+<br />
 
-## Getting Started
-To view the project locally, you can use any local web server. For example, using Python or npx:
+> **Rendertry** es una plataforma web modernizada que ofrece una experiencia inmersiva para previsualizar modificaciones vehiculares. Prueba rines, pintura, vinilos y accesorios directamente sobre la foto de tu auto en segundos.
 
+---
+
+## ✨ Características Principales
+
+- 🏎️ **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
+- 🎨 **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
+- 🧩 **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
+- 📱 **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
+- ⚡ **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+📦 Rendertry
+ ┣ 📂 src
+ ┃ ┣ 📂 assets       # Imágenes, iconos y modelos (Rines, Autos)
+ ┃ ┣ 📂 css          # Estilos del proyecto
+ ┃ ┃ ┣ 📂 components # Módulos CSS (nav, hero, botones, etc.)
+ ┃ ┃ ┣ 📜 base.css   # Variables y resets globales
+ ┃ ┃ ┗ 📜 main.css   # Archivo centralizador de estilos
+ ┃ ┣ 📂 js           # Lógica interactiva en JavaScript
+ ┃ ┣ 📂 partials     # Componentes HTML reutilizables (Header, Footer)
+ ┃ ┣ 📜 index.html   # Landing page y visor principal
+ ┃ ┣ 📜 contacto.html
+ ┃ ┗ 📜 nosotros.html
+ ┗ 📜 README.md
+```
+
+---
+
+## 🚀 Empezando
+
+Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
+
+### Usando Node.js (npx)
 ```bash
-# Using Python
-python -m http.server 8080 -d src
-
-# Using npx
 npx serve src
 ```
 
-Open `http://localhost:8080` (or the port provided by your server) in your browser.
+### Usando Python
+```bash
+python -m http.server 8080 -d src
+```
 
-## Technologies Used
-- HTML5 Semantic Markup
-- Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
-- Vanilla JavaScript
+> **Nota:** Una vez iniciado, abre `http://localhost:8080` (o el puerto que te indique tu consola) en tu navegador preferido.
 
-## License
-All rights reserved.
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Marcado:** HTML5 Semántico
+- **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
+- **Interactividad:** Vanilla JavaScript
+- **Iconografía:** [Lucide Icons](https://lucide.dev/)
+
+---
+
+<div align="center">
+  <br>
+  <p>Construido con pasión para entusiastas del motor.</p>
+  <p>&copy; Rendertry. Todos los derechos reservados.</p>
+</div>
