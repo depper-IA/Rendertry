@@ -1,0 +1,199 @@
+/* ===========================================
+   GSAP 3D SCROLL HERO — OVERLAY DESIGN
+   =========================================== */
+
+.gsap-3d-scroll-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500vh; /* El área de scroll de la animación */
+  background-color: transparent;
+  z-index: 1;
+}
+
+.gsap-3d-scroll-canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Detrás del contenido */
+  background-color: #000;
+}
+
+/* Cuando la animación termina, ocultamos el canvas para que no se vea "atrás" */
+.gsap-3d-scroll-canvas-container.animacion-finished {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#gsap-3d-scroll-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.content-wrapper-overlap {
+  position: relative;
+  z-index: 10; /* Por encima del auto */
+  background-color: var(--bg-dark);
+  box-shadow: 0 -50px 100px rgba(0,0,0,1);
+  margin-top: 500vh; /* Empieza después de la animación */
+}
+
+/* ===========================================
+   OVERLAY
+   =========================================== */
+
+.gsap-3d-scroll-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  padding-right: 8%;
+  color: white;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  /* Dramático: sombra densa que se abre paso al auto */
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.65) 25%,
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.1) 75%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* Badge decorativo */
+.gsap-3d-scroll-overlay .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1.5rem;
+}
+
+.gsap-3d-scroll-overlay .hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #e63946; /* Racing Red */
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+/* Título principal */
+.gsap-3d-scroll-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.3),
+    0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Subtítulo */
+.gsap-3d-scroll-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 420px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin-bottom: 0;
+}
+
+/* Acciones / CTA */
+.gsap-3d-scroll-actions {
+  margin-top: 2.5rem;
+  pointer-events: auto;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.gsap-3d-scroll-actions .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: #e63946;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(230, 57, 70, 0.4);
+  text-decoration: none;
+  position: relative;
+  z-index: 20;
+}
+
+.gsap-3d-scroll-actions .btn-primary:hover {
+  background: #c1121f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.5);
+  color: #fff;
+}
+
+.gsap-3d-scroll-actions .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.gsap-3d-scroll-actions .btn-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+  color: #fff;
+}
