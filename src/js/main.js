@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            const isActive = navLinks.classList.toggle('mobile-menu-active');
+            const isActive = navLinks.classList.toggle('mobile-open');
             menuToggle.setAttribute('aria-expanded', isActive);
         });
     }
@@ -116,20 +116,26 @@ document.addEventListener('DOMContentLoaded', async () => {
                 behavior: 'smooth'
             });
 
-            if (navLinks.classList.contains('mobile-menu-active')) {
-                navLinks.classList.remove('mobile-menu-active');
+            if (navLinks.classList.contains('mobile-open')) {
+                navLinks.classList.remove('mobile-open');
                 menuToggle.setAttribute('aria-expanded', 'false');
             }
         });
     });
 
     // Navbar scroll effect
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
         const nav = document.getElementById('navbar');
         if (nav) {
-            nav.style.padding = window.scrollY > 60 ? '0.8rem 0' : '1.5rem 0';
+            if (window.scrollY > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         }
-    });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initialize on page load
 
     // Framer Motion (Motion One) Animations
     const motionElements = document.querySelectorAll('.step-card, .feat-cell, .gallery-item, .story-card, .pricing-card, .sec-title, .hero-badge, .hero-title, .hero-sub, .hero-actions, .hero-car-massive, .hero-rim-dock, .cta-inner');
@@ -214,6 +220,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            // Collect form data semantically
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Enviando solicitud de asesoría:', data);
+
             // Simple animation for the button
             const btn = contactForm.querySelector('.btn-submit, button[type="submit"]');
             if (btn) {
@@ -221,8 +233,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 btn.innerText = 'Enviando...';
                 btn.disabled = true;
                 
+                // Simulate API request call
                 setTimeout(() => {
-                    alert('✅ ¡Mensaje enviado con éxito! Pronto un asesor tuning se pondrá en contacto contigo.');
+                    alert(`✅ ¡Mensaje enviado con éxito! Gracias ${data.name || ''}, pronto un asesor tuning se pondrá en contacto contigo.`);
                     btn.innerText = originalText;
                     btn.disabled = false;
                     contactForm.reset();
@@ -230,4 +243,195 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     }
+
+    // ─── Visualizer Sandbox Logic ──────────────────────────────────────────
+    const initSandbox = () => {
+        const viewportWrapper = document.getElementById('viewportWrapper');
+        const viewportCar = document.getElementById('viewportCar');
+        const rimFront = document.getElementById('rimFront');
+        const rimRear = document.getElementById('rimRear');
+        const rimFrontImg = document.getElementById('rimFrontImg');
+        const rimRearImg = document.getElementById('rimRearImg');
+        
+        const carButtons = document.querySelectorAll('.btn-car-select');
+        const rimButtons = document.querySelectorAll('.rim-select-btn');
+        
+        const sizeInput = document.getElementById('rim-size');
+        const sizeValSpan = document.getElementById('rim-size-val');
+        const frontXInput = document.getElementById('rim-front-x');
+        const rearXInput = document.getElementById('rim-rear-x');
+        const carUploadInput = document.getElementById('car-upload');
+        
+        const resetBtn = document.getElementById('btn-reset-sandbox');
+        const saveBtn = document.getElementById('btn-save-sandbox');
+        
+        if (!viewportWrapper || !viewportCar) return;
+
+        // Default wheel offset states
+        let baseSize = 100;
+        let frontOffsetX = 0;
+        let rearOffsetX = 0;
+        let activeCar = 'ferrari';
+
+        // Set default car dataset attribute
+        viewportWrapper.setAttribute('data-active-car', activeCar);
+
+        const updatePositions = () => {
+            // Apply scale sizing
+            rimFront.style.transform = `scale(${baseSize / 100}) translate(${frontOffsetX}px, 0)`;
+            rimRear.style.transform = `scale(${baseSize / 100}) translate(${rearOffsetX}px, 0)`;
+            sizeValSpan.innerText = baseSize;
+        };
+
+        // Car selection
+        carButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                carButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const car = btn.dataset.car;
+                activeCar = car;
+                viewportWrapper.setAttribute('data-active-car', car);
+                
+                if (car === 'ferrari') {
+                    viewportCar.src = 'assets/ferrari.webp';
+                } else if (car === 'porsche') {
+                    viewportCar.src = 'assets/slider/porsche.jpg';
+                } else if (car === 'camioneta') {
+                    viewportCar.src = 'assets/slider/camioneta.jpeg';
+                }
+                
+                // Reset positions on car switch
+                frontOffsetX = 0;
+                rearOffsetX = 0;
+                frontXInput.value = 0;
+                rearXInput.value = 0;
+                updatePositions();
+            });
+        });
+
+        // Rim selection
+        rimButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                rimButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const rimImg = btn.dataset.rimImg;
+                rimFrontImg.src = rimImg;
+                rimRearImg.src = rimImg;
+            });
+        });
+
+        // Adjustments sliders
+        sizeInput.addEventListener('input', (e) => {
+            baseSize = parseInt(e.target.value);
+            updatePositions();
+        });
+
+        frontXInput.addEventListener('input', (e) => {
+            frontOffsetX = parseInt(e.target.value);
+            updatePositions();
+        });
+
+        rearXInput.addEventListener('input', (e) => {
+            rearOffsetX = parseInt(e.target.value);
+            updatePositions();
+        });
+
+        // Custom car upload
+        if (carUploadInput) {
+            carUploadInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    viewportCar.src = event.target.result;
+                    activeCar = 'custom';
+                    viewportWrapper.setAttribute('data-active-car', 'custom');
+                    
+                    // Mark upload button as active
+                    carButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // Reset positions
+                    frontOffsetX = 0;
+                    rearOffsetX = 0;
+                    frontXInput.value = 0;
+                    rearXInput.value = 0;
+                    updatePositions();
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Reset
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                baseSize = 100;
+                frontOffsetX = 0;
+                rearOffsetX = 0;
+                sizeInput.value = 100;
+                frontXInput.value = 0;
+                rearXInput.value = 0;
+                updatePositions();
+            });
+        }
+
+        // Save customized image
+        if (saveBtn) {
+            saveBtn.addEventListener('click', async () => {
+                const originalContent = saveBtn.innerHTML;
+                saveBtn.innerText = 'Generando...';
+                saveBtn.disabled = true;
+
+                try {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    // Set canvas resolution to image natural dimensions
+                    canvas.width = viewportCar.naturalWidth || 1200;
+                    canvas.height = viewportCar.naturalHeight || 675;
+
+                    // 1. Draw car image
+                    ctx.drawImage(viewportCar, 0, 0, canvas.width, canvas.height);
+
+                    // 2. Draw front and rear wheels
+                    const drawWheel = (overlayEl, imgEl) => {
+                        const rect = viewportWrapper.getBoundingClientRect();
+                        const wheelRect = overlayEl.getBoundingClientRect();
+                        
+                        // Calculate percentage coordinates
+                        const leftPct = (wheelRect.left - rect.left) / rect.width;
+                        const topPct = (wheelRect.top - rect.top) / rect.height;
+                        const widthPct = wheelRect.width / rect.width;
+                        const heightPct = wheelRect.height / rect.height;
+
+                        const x = leftPct * canvas.width;
+                        const y = topPct * canvas.height;
+                        const w = widthPct * canvas.width;
+                        const h = heightPct * canvas.height;
+
+                        ctx.drawImage(imgEl, x, y, w, h);
+                    };
+
+                    drawWheel(rimFront, rimFrontImg);
+                    drawWheel(rimRear, rimRearImg);
+
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = 'rendertry-personalizado.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                } catch (err) {
+                    console.error('Error saving image:', err);
+                    alert('Hubo un error al exportar la imagen. Intenta con otra o desde un navegador moderno.');
+                } finally {
+                    saveBtn.innerHTML = originalContent;
+                    saveBtn.disabled = false;
+                }
+            });
+        }
+    };
+
+    initSandbox();
 });
