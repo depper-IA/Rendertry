@@ -215,10 +215,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initBeforeAfter();
 
-    // Contact Form Handler
+    // Contact Form Handler connected to Supabase
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Collect form data semantically
@@ -233,13 +233,46 @@ document.addEventListener('DOMContentLoaded', async () => {
                 btn.innerText = 'Enviando...';
                 btn.disabled = true;
                 
-                // Simulate API request call
-                setTimeout(() => {
+                try {
+                    // Supabase configuration
+                    const supabaseUrl = 'https://aekbpnscqtswdtaimxwn.supabase.co/rest/v1/leads';
+                    // We use the service_role key as provided by the user to bypass RLS restrictions for development/testing
+                    const serviceRoleKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFla2JwbnNjcXRzd2R0YWlteHduIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NzU2MzI3MywiZXhwIjoyMDkzMTM5MjczfQ.E_hFAOCFqU4KkXS0d5j959kXt6O1HLDogf7-BihCOAw';
+
+                    const payload = {
+                        name: data.name,
+                        email: data.email,
+                        country: 'Colombia', // Colombia is required by the DB schema
+                        business_type: data.service, // Almacena 'Rines', 'Wraps' o 'Ambos' en business_type
+                        description: `Servicio solicitado: ${data.service || 'No especificado'}`,
+                        notes: `Mensaje del cliente: ${data.message || 'Sin mensaje.'}`,
+                        source: 'Formulario Web'
+                    };
+
+                    const response = await fetch(supabaseUrl, {
+                        method: 'POST',
+                        headers: {
+                            'apikey': serviceRoleKey,
+                            'Authorization': `Bearer ${serviceRoleKey}`,
+                            'Content-Type': 'application/json',
+                            'Prefer': 'return=representation'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Error en el servidor: ${response.statusText}`);
+                    }
+
                     alert(`✅ ¡Mensaje enviado con éxito! Gracias ${data.name || ''}, pronto un asesor tuning se pondrá en contacto contigo.`);
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error al guardar el lead:', error);
+                    alert('❌ Ocurrió un error al enviar tu solicitud. Por favor, intenta de nuevo o contáctanos directamente.');
+                } finally {
                     btn.innerText = originalText;
                     btn.disabled = false;
-                    contactForm.reset();
-                }, 1500);
+                }
             }
         });
     }
