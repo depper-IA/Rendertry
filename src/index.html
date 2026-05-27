@@ -15,6 +15,7 @@
   <link rel="preload" as="image" href="assets/ferrari.webp" fetchpriority="high" />
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/gsap-3d-scroll.css">
+  <link rel="stylesheet" href="css/rendertry-widget.css">
   <link rel="icon" type="image/x-icon" href="assets/logos/logos.ico">
 </head>
 
@@ -155,7 +156,14 @@
         <div class="step-card">
           <h4>2. Elige el producto</h4>
           <p>Selecciona el producto que quieres visualizar.</p>
-          <div class="rims-row">
+          <!-- Category Tabs -->
+          <div class="category-tabs">
+            <button class="category-tab active" data-category="RIN">Rines</button>
+            <button class="category-tab" data-category="WRAP">Wraps</button>
+            <button class="category-tab" data-category="PAINT">Pintura</button>
+          </div>
+          <!-- Product Grid -->
+          <div class="rims-row rendertry-product-grid" data-category="RIN">
             <div class="rim-item-sm"><img src="assets/wheelblend/FIFTEEN52-TRAVERSE-BLACK.png" alt="Fifteen52"></div>
             <div class="rim-item-sm active">
               <img src="assets/wheelblend/ENKEI-RPF1-SILVER.png" alt="Enkei">
@@ -635,6 +643,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/gsap-3d-scroll.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/rendertry-widget.js"></script>
+  <script>
+    // Inicializar Rendertry Widget
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof RendertryWidget !== 'undefined') {
+        RendertryWidget.init({
+          apiUrl: 'http://localhost:3001' // Cambiar a api.rendertry.com en producción
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

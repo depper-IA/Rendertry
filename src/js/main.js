@@ -209,6 +209,83 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initBeforeAfter();
 
+    // ─── Category Tabs for Product Selection ───────────────────────────────────
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const productGrid = document.querySelector('.rendertry-product-grid');
+
+    if (categoryTabs.length && productGrid) {
+        // Product data by category
+        const productsByCategory = {
+            'RIN': [
+                { id: 'BBS-E88', name: 'BBS E88', image: 'assets/wheelblend/BBS-E88.png' },
+                { id: 'ADVAN-GT', name: 'Advan GT', image: 'assets/wheelblend/ADVAN-GT.png' },
+                { id: 'HRE-P101', name: 'HRE P101', image: 'assets/wheelblend/work.png' },
+                { id: 'ROTIFORM-LHR', name: 'Rotiform LHR', image: 'assets/wheelblend/rotiform.png' }
+            ],
+            'WRAP': [
+                { id: 'WRAP-MATTE-BLACK', name: 'Matte Black', image: 'assets/wheelblend/bbs.png' },
+                { id: 'WRAP-GLOSS-WHITE', name: 'Gloss White', image: 'assets/wheelblend/hre.png' },
+                { id: 'WRAP-CARBON', name: 'Carbon Fiber', image: 'assets/wheelblend/advan.png' },
+                { id: 'WRAP-CHROME', name: 'Chrome', image: 'assets/wheelblend/volk.png' }
+            ],
+            'PAINT': [
+                { id: 'PAINT-NAVY', name: 'Navy Blue', image: 'assets/wheelblend/bbs.png' },
+                { id: 'PAINT-CRIMSON', name: 'Crimson Red', image: 'assets/wheelblend/hre.png' },
+                { id: 'PAINT-SILVER', name: 'Silver Metallic', image: 'assets/wheelblend/advan.png' },
+                { id: 'PAINT-MATTE-GREY', name: 'Matte Grey', image: 'assets/wheelblend/work.png' }
+            ]
+        };
+
+        const renderProducts = (category) => {
+            const products = productsByCategory[category] || [];
+            productGrid.innerHTML = products.map(p => `
+                <div class="rim-item-sm" data-product-id="${p.id}" data-product-name="${p.name}" data-product-image="${p.image}" data-category="${category}">
+                    <img src="${p.image}" alt="${p.name}">
+                </div>
+            `).join('');
+
+            // Re-attach click handlers for new elements
+            productGrid.querySelectorAll('.rim-item-sm').forEach(item => {
+                item.addEventListener('click', () => {
+                    productGrid.querySelectorAll('.rim-item-sm').forEach(rim => {
+                        rim.classList.remove('active');
+                        const check = rim.querySelector('.check-badge');
+                        if (check) check.remove();
+                    });
+
+                    item.classList.add('active');
+                    const checkBadge = document.createElement('div');
+                    checkBadge.className = 'check-badge';
+                    checkBadge.innerHTML = '<i data-lucide="check" style="width:12px;height:12px;"></i>';
+                    item.appendChild(checkBadge);
+                    lucide.createIcons();
+
+                    // Update widget state
+                    if (typeof RendertryWidget !== 'undefined') {
+                        const img = item.querySelector('img');
+                        RendertryWidget.getState().selectedProduct = {
+                            id: item.dataset.productId,
+                            name: item.dataset.productName,
+                            imageUrl: img.src,
+                            category: item.dataset.category
+                        };
+                    }
+                });
+            });
+        };
+
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderProducts(tab.dataset.category);
+            });
+        });
+
+        // Initial render
+        renderProducts('RIN');
+    }
+
     // Contact Form Handler
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
