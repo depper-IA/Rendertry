@@ -1,87 +1,77 @@
-# Rendertry Landing Page
+<div align="center">
+  <img src="https://raw.githubusercontent.com/depper-IA/Rendertry/main/src/assets/logos/logo.png" alt="Rendertry Logo" width="100"/>
+  <h1>Rendertry</h1>
+  <p><strong>Visualizador Inmersivo de Personalización Automotriz</strong></p>
 
-> **Legacy landing page** — HTML/CSS vanilla implementation. See [rendertry-backend](https://github.com/depper-IA/rendertry-backend) for the full Next.js 14 application.
-
-<br />
-
-## Stack Tecnológico
-
-<img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-<img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-<img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
+</div>
 
 <br />
 
-## Descripción
+> **Rendertry** es una plataforma web modernizada que ofrece una experiencia inmersiva para previsualizar modificaciones vehiculares. Prueba rines, pintura, vinilos y accesorios directamente sobre la foto de tu auto en segundos.
 
-Landing page estática para **Rendertry** — plataforma web que ofrece una experiencia inmersiva para previsualizar modificaciones vehiculares.
+> 🚀 **¿Buscas la plataforma completa?** El desarrollo full-stack con Next.js 14, Dashboard de administración, base de datos y pasarela de pagos se encuentra en el repositorio [rendertry-backend](https://github.com/depper-IA/rendertry-backend).
 
-> **Nota:** Este repositorio contiene la landing page legacy. El desarrollo activo continúa en el monorepo [rendertry-backend](https://github.com/depper-IA/rendertry-backend).
+---
 
-<br />
+## ❖ Características Principales
 
-## Empezando
+-  **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
+-  **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
+-  **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
+-  **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
+-  **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
 
-```bash
-# Node.js
-npx serve src
+---
 
-# Python
-python -m http.server 8080 -d src
-```
-
-Abre `http://localhost:8080` en tu navegador.
-
-<br />
-
-## Estructura del Proyecto
+## ❖ Estructura del Proyecto
 
 ```text
-Rendertry-OR/
+Rendertry/
 ├── src/
-│   ├── assets/         # Imágenes, iconos, logos
+│   ├── assets/         # Imágenes, iconos y modelos (Rines, Autos)
 │   ├── css/            # Estilos del proyecto
-│   │   ├── components/ # Módulos CSS
-│   │   ├── base.css    # Variables y resets
-│   │   └── main.css    # Archivo central
-│   ├── js/             # JavaScript
-│   │   └── rendertry-widget.js  # Widget embeddable
-│   ├── partials/       # Componentes HTML
-│   ├── index.html      # Landing page principal
+│   │   ├── components/ # Módulos CSS (nav, hero, botones, etc.)
+│   │   ├── base.css    # Variables y resets globales
+│   │   └── main.css    # Archivo centralizador de estilos
+│   ├── js/             # Lógica interactiva en JavaScript
+│   ├── partials/       # Componentes HTML reutilizables (Header, Footer)
+│   ├── index.html      # Landing page y visor principal
 │   ├── contacto.html   # Página de contacto
 │   └── nosotros.html   # Página sobre nosotros
 └── README.md
 ```
 
-<br />
+---
 
-## Características
+## ❖ Empezando
 
-- Banner principal inmersivo con visualización vehicular
-- Widget embeddable `rendertry-widget.js` para integración externa
-- UI/UX en Dark Mode con acentos Racing Red
-- Diseño 100% responsive
-- Animaciones fluidas y menús interactivos
+Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
 
-<br />
-
-## Integración del Widget
-
-Para嵌入 el widget de visualización en cualquier sitio:
-
-```html
-<div id="rendertry-widget" data-vehicle="bmw-m4"></div>
-<script src="https://tu-dominio.com/js/rendertry-widget.js"></script>
+### Usando Node.js (npx)
+```bash
+npx serve src
 ```
 
-<br />
+### Usando Python
+```bash
+python -m http.server 8080 -d src
+```
 
-## Enlaces
+> **Nota:** Una vez iniciado, abre `http://localhost:8080` (o el puerto que te indique tu consola) en tu navegador preferido.
 
-- **Monorepo (desarrollo activo):** https://github.com/depper-IA/rendertry-backend
-- **Landing page:** https://github.com/depper-IA/Rendertry
+---
 
-<br />
+## ❖ Tecnologías Utilizadas
+
+- **Marcado:** HTML5 Semántico
+- **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
+- **Interactividad:** Vanilla JavaScript
+- **Iconografía:** Lucide Icons
+
+---
 
 <div align="center">
   <br>
