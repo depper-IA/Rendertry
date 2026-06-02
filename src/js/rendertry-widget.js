@@ -191,24 +191,36 @@ const RendertryWidget = (function() {
   }
 
   /**
+   * Convertir File a base64 data URL
+   */
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /**
    * Crear generación usando el endpoint público (sin auth)
    */
   async function createGenerationPublic(brandSlug) {
-    const formData = new FormData();
-    formData.append('productId', state.selectedProduct.id);
-
-    if (state.selfieFile) {
-      formData.append('selfie', state.selfieFile);
-    }
+    const imageBase64 = await fileToBase64(state.selfieFile);
 
     const response = await fetch(`${state.apiUrl}/api/pruebalo/${brandSlug}/generate`, {
       method: 'POST',
-      body: formData
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        image: imageBase64,
+        productType: state.selectedProduct.category || 'RIN',
+        productId: state.selectedProduct.id
+      })
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || 'Error al crear generación');
+      throw new Error(errorData.error || errorData.message || 'Error al crear generación');
     }
 
     return response.json();
