@@ -1,0 +1,46 @@
+http:
+  routers:
+    rendertry-frontend-http:
+      rule: "Host(`rendertry.com`)"
+      entrypoints:
+        - web
+      service: rendertry-frontend-http-service
+    rendertry-www-http:
+      rule: "Host(`www.rendertry.com`)"
+      entrypoints:
+        - web
+      service: rendertry-frontend-http-service
+    rendertry-frontend:
+      rule: "Host(`rendertry.com`)"
+      entrypoints:
+        - websecure
+      tls:
+        certresolver: mytlschallenge
+      service: rendertry-frontend-service
+    rendertry-www:
+      rule: "Host(`www.rendertry.com`)"
+      entrypoints:
+        - websecure
+      tls:
+        certresolver: mytlschallenge
+      service: rendertry-frontend-service
+    rendertry-api:
+      rule: "Host(`api.rendertry.com`)"
+      entrypoints:
+        - websecure
+      tls:
+        certresolver: mytlschallenge
+      service: rendertry-api-service
+  services:
+    rendertry-frontend-http-service:
+      loadBalancer:
+        servers:
+          - url: "http://rendertry-frontend-static:80"
+    rendertry-frontend-service:
+      loadBalancer:
+        servers:
+          - url: "http://rendertry-frontend-static:80"
+    rendertry-api-service:
+      loadBalancer:
+        servers:
+          - url: "http://rendertry-backend:3002"

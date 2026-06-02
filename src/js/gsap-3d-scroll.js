@@ -8,7 +8,7 @@ const setupGSAP3DScroll = () => {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  const totalFrames = 143;
+  const totalFrames = 192;
   const extraFrames = 5;
   const frameRef = { current: 0 };
   const images = [];
@@ -79,8 +79,8 @@ const setupGSAP3DScroll = () => {
       images.push(...loadedImages);
       if (images.length === 0) throw new Error("Sin frames");
 
-      // Empezar con el auto completo (índice 142 = frame-143.jpg)
-      frameRef.current = 142;
+      // Empezar con el auto completo (índice 191 = frame-192.jpg)
+      frameRef.current = 191;
       updateCanvas();
 
       gsap.registerPlugin(ScrollTrigger);
