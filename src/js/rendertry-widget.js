@@ -154,7 +154,7 @@ const RendertryWidget = (function() {
   }
 
   /**
-   * Generar visualización
+   * Generar visualización usando el endpoint público de pruebalo
    */
   async function generateVisualization() {
     if (state.isGenerating) return;
@@ -171,18 +171,16 @@ const RendertryWidget = (function() {
     showLoading(true);
 
     try {
-      // 1. Subir imagen selfie a Supabase Storage
-      const selfieUrl = await uploadSelfie();
+      const brandSlug = state.brandId || 'default';
 
-      // 2. Llamar al backend para crear generación
-      const generation = await createGeneration(selfieUrl);
+      // 1. Llamar al endpoint público de generación
+      const generation = await createGenerationPublic(brandSlug);
 
-      // 3. Esperar resultado (polling)
-      const result = await waitForResult(generation.id);
+      // 2. Esperar resultado (polling)
+      const result = await waitForResultPublic(generation.id, brandSlug);
 
-      // 4. Mostrar resultado
-      showResult(result.resultUrl || result.imageUrl);
-
+      // 3. Mostrar resultado
+      showResult(result.result_image_url || result.resultUrl);
     } catch (error) {
       console.error('[RendertryWidget] Error:', error);
       showError('Error al generar visualización. Intenta de nuevo.');
@@ -193,7 +191,59 @@ const RendertryWidget = (function() {
   }
 
   /**
-   * Subir imagen a Supabase Storage
+   * Crear generación usando el endpoint público (sin auth)
+   */
+  async function createGenerationPublic(brandSlug) {
+    const formData = new FormData();
+    formData.append('productId', state.selectedProduct.id);
+
+    if (state.selfieFile) {
+      formData.append('selfie', state.selfieFile);
+    }
+
+    const response = await fetch(`${state.apiUrl}/api/pruebalo/${brandSlug}/generate`, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || 'Error al crear generación');
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Esperar resultado con polling (endpoint público)
+   */
+  async function waitForResultPublic(generationId, brandSlug, maxAttempts = 60) {
+    for (let i = 0; i < maxAttempts; i++) {
+      const response = await fetch(`${state.apiUrl}/api/pruebalo/${brandSlug}/generation/${generationId}`);
+
+      if (!response.ok) {
+        await sleep(2000);
+        continue;
+      }
+
+      const data = await response.json();
+
+      if (data.status === 'SUCCESS' || data.status === 'success') {
+        return data;
+      }
+
+      if (data.status === 'FAILED' || data.status === 'failed') {
+        throw new Error(data.error_message || 'Generación fallida');
+      }
+
+      await sleep(3000);
+    }
+
+    throw new Error('Tiempo de espera agotado');
+  }
+
+  /**
+   * Subir imagen (legacy - mantener por compatibilidad)
    */
   async function uploadSelfie() {
     const formData = new FormData();
@@ -213,7 +263,7 @@ const RendertryWidget = (function() {
   }
 
   /**
-   * Crear generación en el backend
+   * Crear generación (legacy - mantener por compatibilidad)
    */
   async function createGeneration(selfieUrl) {
     const response = await fetch(`${state.apiUrl}/api/generations`, {
@@ -236,34 +286,6 @@ const RendertryWidget = (function() {
     }
 
     return response.json();
-  }
-
-  /**
-   * Esperar resultado con polling
-   */
-  async function waitForResult(generationId, maxAttempts = 30) {
-    for (let i = 0; i < maxAttempts; i++) {
-      const response = await fetch(`${state.apiUrl}/api/generations/${generationId}`, {
-        headers: {
-          'Authorization': `Bearer ${getAuthToken()}`
-        }
-      });
-
-      const data = await response.json();
-
-      if (data.status === 'SUCCESS') {
-        return data;
-      }
-
-      if (data.status === 'FAILED') {
-        throw new Error(data.error_message || 'Generación fallida');
-      }
-
-      // Esperar 2 segundos
-      await sleep(2000);
-    }
-
-    throw new Error('Tiempo de espera agotado');
   }
 
   /**
