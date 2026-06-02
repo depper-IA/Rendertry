@@ -12,7 +12,7 @@ const setupGSAP3DScroll = () => {
   const extraFrames = 5;
   const frameRef = { current: 0 };
   const images = [];
-  const urlPattern = 'assets/frames/bmw-m4/frame-###.jpg';
+  const urlPattern = 'assets/frames/bmw-m4/frame-###.webp';
 
   const overlay = document.querySelector('.gsap-3d-scroll-overlay');
 
@@ -68,6 +68,8 @@ const setupGSAP3DScroll = () => {
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     drawFrame(Math.round(frameRef.current));
   };
 

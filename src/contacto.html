@@ -8,8 +8,8 @@
   <title>Contacto | Rendertry — Visualizador de Personalización</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;400;500;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css">
   <style>
     .contact-hero {
@@ -32,7 +32,7 @@
       backdrop-filter: blur(20px);
       border-radius: 40px;
       padding: 4rem;
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(230, 57, 70, 0.2);
       box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
     }
 
@@ -62,7 +62,7 @@
       color: var(--primary);
       width: 50px;
       height: 50px;
-      background: rgba(59, 130, 246, 0.1);
+      background: rgba(230, 57, 70, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -157,7 +157,7 @@
 </head>
 
 <body>
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 
   <main class="contact-hero">
     <div class="container">
@@ -183,34 +183,33 @@
             </div>
           </div>
           <div class="footer-social" style="margin-top: 2rem; justify-content: flex-start;">
-            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
           </div>
         </div>
 
         <div class="contact-form-wrapper">
           <form id="contactForm" class="contact-form-premium">
             <div class="form-group">
-              <label>Tu Nombre</label>
-              <input type="text" placeholder="Ej: Marcos Pérez" required>
+              <label for="contactName">Tu Nombre</label>
+              <input type="text" id="contactName" name="name" placeholder="Ej: Marcos Pérez" required>
             </div>
             <div class="form-group">
-              <label>Email de Contacto</label>
-              <input type="email" placeholder="marcos@ejemplo.com" required>
+              <label for="contactEmail">Email de Contacto</label>
+              <input type="email" id="contactEmail" name="email" placeholder="marcos@ejemplo.com" required>
             </div>
             <div class="form-group">
-              <label>Tipo de Servicio</label>
-              <select>
-                <option>Visualización de Rines</option>
-                <option>Cambio de Pintura / Wrap</option>
-                <option>Accesorios Aerodinámicos</option>
-                <option>Proyecto Completo</option>
+              <label for="contactService">Tipo de Servicio</label>
+              <select id="contactService" name="service">
+                <option value="Rines">Visualización de Rines</option>
+                <option value="Wraps">Diseño de Wraps / Vinilos</option>
+                <option value="Ambos">Ambos (Rines y Wraps)</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Cuéntanos tu idea</label>
-              <textarea rows="4" placeholder="¿Qué tienes en mente para tu auto?"></textarea>
+              <label for="contactMessage">Cuéntanos tu idea</label>
+              <textarea id="contactMessage" name="message" rows="4" placeholder="¿Qué tienes en mente para tu auto?"></textarea>
             </div>
             <button type="submit" class="btn-submit">Enviar Solicitud de Asesoría</button>
           </form>
