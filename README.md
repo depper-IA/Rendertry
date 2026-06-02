@@ -12,7 +12,9 @@
 
 > **Rendertry** es una plataforma web modernizada que ofrece una experiencia inmersiva para previsualizar modificaciones vehiculares. Prueba rines, pintura, vinilos y accesorios directamente sobre la foto de tu auto en segundos.
 
-> 🚀 **¿Buscas la plataforma completa?** El desarrollo full-stack con Next.js 14, Dashboard de administración, base de datos y pasarela de pagos se encuentra en el repositorio [rendertry-backend](https://github.com/depper-IA/rendertry-backend).
+> 🚀 **¿Buscas la plataforma completa?** El desarrollo full-stack con Next.js 14, Dashboard de administración, base de datos y pasarela de pagos se encuentra en el repositorio **privado** `depper-IA/rendertry-backend`.
+> 
+> *Este repositorio privado contiene la arquitectura SaaS completa: autenticación JWT, pasarela de pagos con Stripe, panel de control administrativo y APIs de generación de imágenes por IA.* (Si eres parte de la organización o buscas acceder al showcase de demostración técnica, consulta con el equipo de desarrollo de `depper-IA`).
 
 ---
 
