@@ -649,7 +649,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       if (typeof RendertryWidget !== 'undefined') {
         RendertryWidget.init({
-          apiUrl: 'http://localhost:3000' // Cambiar a api.rendertry.com en producción
+          apiUrl: window.RENDERTRY_API_URL || 'https://api.rendertry.com'
         });
       }
     });

@@ -311,16 +311,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 btn.disabled = true;
                 
                 try {
-                    // Supabase configuration
                     const supabaseUrl = 'https://aekbpnscqtswdtaimxwn.supabase.co/rest/v1/leads';
-                    // We use the service_role key as provided by the user to bypass RLS restrictions for development/testing
-                    const serviceRoleKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFla2JwbnNjcXRzd2R0YWlteHduIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NzU2MzI3MywiZXhwIjoyMDkzMTM5MjczfQ.E_hFAOCFqU4KkXS0d5j959kXt6O1HLDogf7-BihCOAw';
+                    const anonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFla2JwbnNjcXRzd2R0YWlteHduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NjMyNzMsImV4cCI6MjA5MzEzOTI3M30.M-TOJ_8dwXoXd8c9KSCcDoR8gLA4vIn-giHxy5Ea-Ss';
 
                     const payload = {
                         name: data.name,
                         email: data.email,
-                        country: 'Colombia', // Colombia is required by the DB schema
-                        business_type: data.service, // Almacena 'Rines', 'Wraps' o 'Ambos' en business_type
+                        country: 'Colombia',
+                        business_type: data.service,
                         description: `Servicio solicitado: ${data.service || 'No especificado'}`,
                         notes: `Mensaje del cliente: ${data.message || 'Sin mensaje.'}`,
                         source: 'Formulario Web'
@@ -329,10 +327,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const response = await fetch(supabaseUrl, {
                         method: 'POST',
                         headers: {
-                            'apikey': serviceRoleKey,
-                            'Authorization': `Bearer ${serviceRoleKey}`,
+                            'apikey': anonKey,
+                            'Authorization': `Bearer ${anonKey}`,
                             'Content-Type': 'application/json',
-                            'Prefer': 'return=representation'
+                            'Prefer': 'return=minimal'
                         },
                         body: JSON.stringify(payload)
                     });
