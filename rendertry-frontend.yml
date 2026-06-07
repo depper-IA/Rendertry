@@ -35,11 +35,11 @@ http:
     rendertry-frontend-http-service:
       loadBalancer:
         servers:
-          - url: "http://rendertry-frontend-static:80"
+          - url: "http://rendertry-frontend:3000"
     rendertry-frontend-service:
       loadBalancer:
         servers:
-          - url: "http://rendertry-frontend-static:80"
+          - url: "http://rendertry-frontend:3000"
     rendertry-api-service:
       loadBalancer:
         servers:

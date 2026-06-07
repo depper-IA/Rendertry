@@ -1,0 +1,233 @@
+/* VehicleShowcase3D — scroll-driven stacked 3D card deck of final results.
+   Scroll changes the front vehicle; hover fans the cards apart.
+   Card transforms/opacity are driven by GSAP (see component). CSS only
+   handles base look + which card is the front (.front). Brand palette only. */
+
+/* Tall outer section gives the scroll distance. Inner is pinned. */
+.section {
+  position: relative;
+  height: 520vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+
+/* ---- Heading ---- */
+.head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+}
+
+.title span {
+  color: var(--primary);
+}
+
+.sub {
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* ---- Deck ---- */
+.deck {
+  position: relative;
+  width: min(940px, 92%);
+  height: min(54vh, 460px);
+  perspective: 1900px;
+  /* No preserve-3d: GSAP zIndex controls stacking so the front card is
+     never overlapped by a rotated card behind it. */
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(600px, 78%);
+  aspect-ratio: 16 / 10;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  cursor: crosshair;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 40px 80px -30px rgba(0, 0, 0, 0.85),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  will-change: transform, opacity;
+  /* GSAP sets the visibility; hide until placed to avoid a flash. */
+  visibility: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* Front card — brand glow + product overlay */
+.front {
+  border-color: rgba(230, 57, 70, 0.35);
+  box-shadow:
+    0 55px 95px -25px rgba(0, 0, 0, 0.9),
+    0 0 55px rgba(230, 57, 70, 0.13),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ---- AI scan line — sweeps the front card only ---- */
+.scanline {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(230, 57, 70, 0.1) 48%,
+    rgba(230, 57, 70, 0.4) 50%,
+    rgba(230, 57, 70, 0.1) 52%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.front .scanline {
+  opacity: 1;
+  animation: scanSweep 4s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+}
+
+/* ---- Meta overlay — car name + product tag ---- */
+.meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 3rem 1.5rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: linear-gradient(to top, rgba(10, 12, 16, 0.94), rgba(10, 12, 16, 0.55) 55%, transparent);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.front .meta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.tag {
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* ---- Nav buttons ---- */
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--text-main);
+  background: rgba(17, 21, 28, 0.7);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  cursor: crosshair;
+  transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-out), background 0.4s var(--ease-out);
+}
+
+.navBtn:hover {
+  border-color: var(--primary);
+  background: rgba(230, 57, 70, 0.18);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.navBtn:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.prev { left: 1.5rem; }
+.next { right: 1.5rem; }
+
+/* ---- Dots ---- */
+.dots {
+  position: absolute;
+  bottom: 7vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.55rem;
+  z-index: 90;
+}
+
+.dot,
+.dotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  cursor: crosshair;
+  padding: 0;
+  background: rgba(154, 163, 181, 0.35);
+  transition: all 0.4s var(--ease-out);
+}
+
+.dotActive {
+  width: 26px;
+  border-radius: 4px;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .section { height: 460vh; }
+  .deck { height: 42vh; }
+  .card { width: min(440px, 88%); }
+  .navBtn { width: 40px; height: 40px; }
+  .prev { left: 0.25rem; }
+  .next { right: 0.25rem; }
+  .name { font-size: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .front .scanline { animation: none; opacity: 0; }
+}
