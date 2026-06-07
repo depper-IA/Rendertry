@@ -40,3 +40,9 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Secrets / service accounts
+lookitry-startup-9bb76695d905.json
+*.iam.gserviceaccount.com.json
+*-serviceaccount.json
+google-credentials*.json
