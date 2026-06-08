@@ -1,82 +1,113 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/depper-IA/Rendertry/main/src/assets/logos/logo.png" alt="Rendertry Logo" width="100"/>
+  <img src="https://raw.githubusercontent.com/depper-IA/Rendertry/main/public/assets/logos/logo.png" alt="Rendertry Logo" width="120"/>
   <h1>Rendertry</h1>
-  <p><strong>Visualizador Inmersivo de Personalización Automotriz</strong></p>
+  <p><strong>Visualizador de Personalización Automotriz con IA</strong></p>
 
-  <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-  <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Next.js_14-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=black" alt="GSAP" />
 </div>
 
 <br />
 
-> **Rendertry** es una plataforma web modernizada que ofrece una experiencia inmersiva para previsualizar modificaciones vehiculares. Prueba rines, pintura, vinilos y accesorios directamente sobre la foto de tu auto en segundos.
+> **Rendertry** permite visualizar la personalización de un vehículo sobre su foto real. El usuario sube una imagen, elige rines, pintura o wraps, y la IA genera el resultado en segundos. Gratis y sin registro.
 
-> **¿Buscas la plataforma completa?** El desarrollo full-stack con Next.js 14, Dashboard de administración, base de datos y pasarela de pagos se encuentra en el repositorio **privado** `depper-IA/rendertry-backend`.
-> 
-> *Este repositorio privado contiene la arquitectura SaaS completa: autenticación JWT, pasarela de pagos con Stripe, panel de control administrativo y APIs de generación de imágenes por IA.* (Si eres parte de la organización o buscas acceder al showcase de demostración técnica, consulta con el equipo de desarrollo de `depper-IA`).
+> **¿Buscas la plataforma completa?** El producto full-stack (dashboard de administración, autenticación, pagos, suscripciones y APIs internas) vive en el repositorio privado `depper-IA/rendertry-backend`. Este repositorio contiene únicamente el **sitio público**.
 
 ---
 
-## ❖ Características Principales
+## Alcance de este repositorio
 
--  **Visuales Inmersivos:** Banner principal de alto impacto con un escenario interactivo de visualización de vehículos.
--  **UI/UX Moderno:** Estética profesional en "Dark Mode" con vibrantes acentos "Racing Red".
--  **Arquitectura CSS Modular:** Estructura basada en componentes para un mantenimiento altamente eficiente.
--  **Totalmente Responsivo:** Diseño fluido optimizado para escritorio, laptops, tablets y dispositivos móviles.
--  **Interacciones Dinámicas:** Animaciones fluidas, menú de rines flotante e interactivo, y sliders dinámicos comparativos (Antes y Después).
+Versión pública del sitio. Incluye solo las rutas de cara al usuario:
+
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Landing principal: hero animado, proceso, galería, comparador, planes |
+| `/nosotros` | Página del equipo, misión y forma de trabajo |
+| `/contacto` | Formulario de contacto y datos de la empresa |
+| `/demo` | Demo interactiva del widget de personalización |
+
+Las áreas privadas (dashboard, login, registro, pagos, suscripciones y autenticación) no forman parte de este repositorio.
 
 ---
 
-## ❖ Estructura del Proyecto
+## Características
+
+- **Hero con video scroll-scrubbed** sincronizado al desplazamiento mediante GSAP.
+- **Comparador Antes/Después** con física de oscilación senoidal.
+- **Slider de vehículos 3D** con paralaje y zoom continuo.
+- **Marquee de marcas y de texto** en color de marca.
+- **SEO completo**: Open Graph, Twitter Cards, `robots.txt`, `sitemap.xml`, datos estructurados JSON-LD, `og-image` y `llms.txt`.
+- **Diseño responsivo** (escritorio, tablet y móvil) en dark mode con acentos Racing Red.
+- **Rendimiento**: imágenes optimizadas, lazy loading y carga diferida del hero.
+
+---
+
+## Stack
+
+- **Framework:** Next.js 14 (App Router, `output: standalone`)
+- **Lenguaje:** TypeScript 5
+- **Estilos:** CSS con variables, centralizado en `src/app/globals.css` (sin Tailwind)
+- **Animación:** GSAP (hero) + Motion / Framer Motion (scroll) + Lenis (smooth scroll)
+- **Iconos:** Lucide React
+- **Datos:** Supabase (cliente para el demo)
+- **Tipografías:** Audiowide (display) + Roboto (texto)
+
+---
+
+## Estructura del proyecto
 
 ```text
 Rendertry/
+├── public/
+│   └── assets/                 # Logos, imágenes, video del hero, og-image
 ├── src/
-│   ├── assets/         # Imágenes, iconos y modelos (Rines, Autos)
-│   ├── css/            # Estilos del proyecto
-│   │   ├── components/ # Módulos CSS (nav, hero, botones, etc.)
-│   │   ├── base.css    # Variables y resets globales
-│   │   └── main.css    # Archivo centralizador de estilos
-│   ├── js/             # Lógica interactiva en JavaScript
-│   ├── partials/       # Componentes HTML reutilizables (Header, Footer)
-│   ├── index.html      # Landing page y visor principal
-│   ├── contacto.html   # Página de contacto
-│   └── nosotros.html   # Página sobre nosotros
+│   ├── app/
+│   │   ├── layout.tsx          # Layout raíz: fuentes, metadata y SEO
+│   │   ├── page.tsx            # Landing (home)
+│   │   ├── globals.css         # Sistema de estilos central
+│   │   ├── robots.ts           # robots.txt dinámico
+│   │   ├── sitemap.ts          # sitemap.xml dinámico
+│   │   ├── (public)/
+│   │   │   ├── components/      # Hero GSAP + secciones de la landing
+│   │   │   ├── nosotros/        # Página Nosotros (+ metadata)
+│   │   │   ├── contacto/        # Página Contacto (+ metadata)
+│   │   │   └── demo/            # Demo del widget
+│   │   └── api/
+│   │       ├── pruebalo/        # Generación por IA (incluye modo demo)
+│   │       └── products/        # Catálogo de productos
+│   ├── components/              # Navbar, Footer, Widget, BeforeAfterSlider...
+│   ├── config/                 # Cliente de Supabase
+│   ├── hooks/                  # Hooks de animación de scroll
+│   └── lib/                    # Utilidades
+├── scripts/                    # Optimización de imágenes, limpieza de build
 └── README.md
 ```
 
 ---
 
-## ❖ Empezando
+## Desarrollo
 
-Para previsualizar el proyecto localmente, no requieres de una configuración compleja o de compiladores pesados. Puedes utilizar cualquier servidor local básico.
+Requiere **Node.js 18+** y **pnpm** (no usar npm ni yarn).
 
-### Usando Node.js (npx)
 ```bash
-npx serve src
+pnpm install      # instalar dependencias
+pnpm dev          # servidor de desarrollo en http://localhost:3000
+pnpm build        # build de producción (standalone)
+pnpm start        # servir el build de producción
+pnpm lint         # ESLint
+pnpm typecheck    # comprobación de tipos (tsc --noEmit)
 ```
 
-### Usando Python
-```bash
-python -m http.server 8080 -d src
-```
+### Variables de entorno
 
-> **Nota:** Una vez iniciado, abre `http://localhost:8080` (o el puerto que te indique tu consola) en tu navegador preferido.
-
----
-
-## ❖ Tecnologías Utilizadas
-
-- **Marcado:** HTML5 Semántico
-- **Estilos:** Vanilla CSS3 (Custom Properties, Flexbox, CSS Grid)
-- **Interactividad:** Vanilla JavaScript
-- **Iconografía:** Lucide Icons
+Copia `.env.example` a `.env.local` y completa los valores. Las claves de Supabase y la URL pública del sitio (`NEXT_PUBLIC_APP_URL`) son las relevantes para esta versión. El proyecto compila sin una conexión activa a Supabase.
 
 ---
 
 <div align="center">
   <br>
-  <p>Construido con pasión para entusiastas del motor.</p>
-  <p>&copy; Rendertry. Todos los derechos reservados.</p>
+  <p>Construido para entusiastas del motor.</p>
+  <p>&copy; 2026 Rendertry. Todos los derechos reservados.</p>
 </div>
