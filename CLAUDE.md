@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## MANDATORY: Read before any action
 
-**At the start of every session, read `REGLAS_IMPORTANTES.md` and `docs/design.md` before creating or modifying any section, component, or style.** No exceptions.
+**At the start of every session, read `maestro.md`, `REGLAS_IMPORTANTES.md`, and `docs/design.md` before creating or modifying any section, component, or style.** No exceptions.
 
 ---
 

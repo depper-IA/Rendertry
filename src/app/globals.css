@@ -134,7 +134,6 @@ h1, h2, h3, h4, h5, h6 {
 .d-flex { display: flex; }
 .d-block { display: block; }
 .d-md-inline-flex { display: inline-flex; }
-.d-md-inline-flex { display: inline-flex; }
 
 .gap-1 { gap: 0.25rem; }
 .gap-3 { gap: 0.75rem; }
@@ -165,13 +164,28 @@ h1, h2, h3, h4, h5, h6 {
 .col-md-6 { flex: 0 0 50%; max-width: 50%; }
 .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
 .col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
-.col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
 .col-md-3 { flex: 0 0 25%; max-width: 25%; }
 .col-6 { flex: 0 0 50%; max-width: 50%; }
 
+/* Responsive grid collapse (Bootstrap-like). The base column widths above are
+   fixed at every width, so without these overrides cards stay 3-across and
+   become unreadable on phones. lg columns drop to 2-up on tablets; every
+   column goes full width below 768px. */
+@media (max-width: 991.98px) {
+  .col-lg-4,
+  .col-lg-2 { flex: 0 0 50%; max-width: 50%; }
+}
+@media (max-width: 767.98px) {
+  .col-md-3,
+  .col-md-4,
+  .col-md-6,
+  .col-lg-4,
+  .col-lg-2,
+  .col-6 { flex: 0 0 100%; max-width: 100%; }
+}
+
 @media (min-width: 768px) {
   .d-md-inline-flex { display: inline-flex !important; }
-  .d-md-inline-flex { display: inline-flex; }
 }
 
 /* ===========================================
@@ -574,10 +588,12 @@ h1, h2, h3, h4, h5, h6 {
   transition: opacity 0.5s ease;
 }
 
-#gsap-3d-scroll-canvas {
+#gsap-3d-scroll-canvas,
+.gsap-hero-video {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 .content-wrapper-overlap {
@@ -603,7 +619,6 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 0.3s ease;
   background: linear-gradient(
     to left,
     rgba(0,0,0,0.85) 0%,
@@ -675,6 +690,24 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.2);
   text-transform: uppercase;
+}
+
+/* Title rendered as masked lines so each rises in on entrance (GSAP). */
+.hero-title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-title-inner {
+  display: block;
+  will-change: transform;
+}
+
+/* Per-letter spans: rise on entry, slide right on scroll exit. */
+.hero-char {
+  display: inline-block;
+  white-space: pre;
+  will-change: transform, opacity;
 }
 
 .gsap-3d-scroll-subtitle {
@@ -1243,18 +1276,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fullbleed-left {
-  max-width: 600px;
+  max-width: 780px;
 }
 
 .fullbleed-eyebrow {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.75rem;
+  gap: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.6rem;
   text-transform: uppercase;
 }
 
@@ -1268,13 +1301,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fullbleed-title {
-  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-  font-weight: 900;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.1rem, 4.4vw, 3.8rem);
+  line-height: 1.14;
+  /* Audiowide is a wide display face — negative tracking cramps it. Give it air. */
+  letter-spacing: 0.005em;
   color: #ffffff;
   text-transform: none;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
 .fullbleed-sub {
@@ -1367,13 +1401,17 @@ h1, h2, h3, h4, h5, h6 {
 .sec-title {
   font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.1;
+  text-align: center;
 }
 
 .sec-sub {
   color: var(--text-muted);
   font-size: 1.05rem;
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
+  text-align: center;
 }
 
 /* ===========================================
@@ -1794,6 +1832,270 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===========================================
+    ABOUT / NOSOTROS PAGE
+    =========================================== */
+
+/* Same backdrop as the contact page: photo + dark wash. Fixed on desktop for a
+   subtle parallax; switched to scroll on small screens (iOS fixed-bg is janky). */
+.about-page {
+  position: relative;
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    linear-gradient(rgba(10, 12, 16, 0.9), rgba(10, 12, 16, 0.95)),
+    url('/assets/contact-bg.png') center / cover no-repeat fixed;
+}
+
+.about-page .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Hero --- */
+.about-hero {
+  padding: calc(var(--nav-height) + 5rem) 0 4rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 0%, rgba(230, 57, 70, 0.12) 0%, transparent 60%);
+}
+
+.about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.about-eyebrow-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--primary);
+}
+
+.about-hero-title {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  color: #fff;
+  text-wrap: balance;
+  max-width: 18ch;
+  margin: 0 auto 1.25rem;
+}
+
+.about-hero-sub {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 54ch;
+  margin: 0 auto;
+  text-wrap: pretty;
+}
+
+/* --- Mission (asymmetric, image-led) --- */
+.about-mission {
+  padding: 5rem 0;
+}
+
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.about-h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.about-mission-text p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+.about-mission-text p + p {
+  margin-top: 1.1rem;
+}
+
+.about-mission-media {
+  position: relative;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.about-mission-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.about-mission-tag {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(10, 12, 16, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+}
+
+/* --- Pillars --- */
+.about-pillars-section {
+  padding: 4rem 0;
+}
+
+.about-pillars {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.about-pillar {
+  padding: 2rem 1.75rem;
+  border-radius: 16px;
+  background: rgba(17, 21, 28, 0.55);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.about-pillar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid rgba(230, 57, 70, 0.2);
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+.about-pillar-title {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.about-pillar-text {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+/* --- Team --- */
+.about-team {
+  padding: 4rem 0 5rem;
+}
+
+.team-grid {
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.team-initials {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.team-role {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-main);
+}
+
+.team-bio {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.team-links {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* --- Final CTA (about) --- */
+.about-cta {
+  text-align: center;
+  padding: 5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.about-cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-cta-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: #fff;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.about-cta-sub {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 860px) {
+  .about-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-mission-media {
+    order: -1;
+  }
+  .about-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-page {
+    background-attachment: scroll;
+  }
+}
+
+/* ===========================================
     CTA FINAL
     =========================================== */
 
@@ -2012,6 +2314,53 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   position: relative;
   overflow: hidden;
+}
+
+/* Footer text marquee — big sliding wordmark in the brand color (k3-style) */
+.footer-marquee {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 0.55rem 0;
+  background: var(--primary);
+  margin-bottom: 3.5rem;
+}
+
+.footer-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee 90s linear infinite;
+  will-change: transform;
+}
+
+.footer-marquee-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-marquee-item {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.6vw, 1.2rem);
+  line-height: 1;
+  color: #000;
+  letter-spacing: 0.01em;
+  padding: 0 1.75rem;
+}
+
+.footer-marquee-sep {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: #000;
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-marquee-track {
+    animation: none;
+  }
 }
 
 /* Warm ambient glow at top of footer */
@@ -2338,9 +2687,7 @@ h1, h2, h3, h4, h5, h6 {
     aspect-ratio: 4 / 3;
   }
 
-  .feat-grid {
-    grid-template-columns: 1fr;
-  }
+  /* .feat-grid stays 2-col here; the 1-col override lives in the @media (max-width: 576px) block */
 
   .feature-item {
     flex-direction: column;
@@ -3487,15 +3834,10 @@ select,
 
 
 /* ==========================================================================
-   17. PRELOADER + PAGE TRANSITION CURTAIN
+   17. PRELOADER (home page only)
    ========================================================================== */
 .is-preloading {
   overflow: hidden;
-}
-
-/* Internal navigation: hide the preloader before paint (no flash). */
-.skip-preloader .preloader {
-  display: none !important;
 }
 
 .preloader {
@@ -3542,12 +3884,3 @@ select,
   letter-spacing: 0.1em;
 }
 
-/* Page transition curtain — fixed overlay that wipes upward on each nav. */
-.page-curtain {
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  background: var(--bg-dark);
-  pointer-events: none;
-  display: none;
-}

@@ -1,30 +1,60 @@
 'use client';
 
-import { User } from 'lucide-react';
+import { Eye, Gauge, Code2 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const teamMembers = [
+type Member = {
+  name: string;
+  initials: string;
+  role: string;
+  bio: string;
+  github: string;
+  linkedin: string;
+};
+
+const teamMembers: Member[] = [
   {
     name: 'Julián Caldas',
-    role: 'Front End Junior y Organización Técnica',
-    bio: 'Especialista en desarrollo web y lógica de negocio, enfocado en crear experiencias interactivas y escalables.',
+    initials: 'JC',
+    role: 'Frontend y organización técnica',
+    bio: 'Conecta la interfaz con la lógica de negocio y mantiene el proyecto ordenado mientras crece.',
     github: '#',
     linkedin: '#',
   },
   {
     name: 'Samuel Wilkie',
-    role: 'Desarrollador Full Stack',
-    bio: 'Experto en SDD e integración de tecnologías y diseño de arquitecturas robustas para aplicaciones modernas.',
+    initials: 'SW',
+    role: 'Desarrollo full stack',
+    bio: 'Integra la generación con IA y diseña la arquitectura que sostiene cada render.',
     github: '#',
     linkedin: '#',
   },
   {
     name: 'Juan Blandón',
-    role: 'Desarrollador Frontend Junior y UX/UI',
-    bio: 'Apasionado por el código limpio y la optimización de rendimiento, garantizando interfaces fluidas y rápidas.',
+    initials: 'JB',
+    role: 'Frontend y UX/UI',
+    bio: 'Cuida el detalle visual y el rendimiento para que la experiencia se sienta fluida.',
     github: '#',
     linkedin: '#',
+  },
+];
+
+const pillars = [
+  {
+    Icon: Eye,
+    title: 'Ver antes de decidir',
+    text: 'Nadie debería invertir en rines o pintura imaginando el resultado. Primero se ve, después se decide.',
+  },
+  {
+    Icon: Gauge,
+    title: 'Rápido y sin fricción',
+    text: 'Subir una foto y obtener el render toma segundos. Sin registro obligatorio para empezar a probar.',
+  },
+  {
+    Icon: Code2,
+    title: 'Hecho con criterio',
+    text: 'Código limpio, rendimiento medido y una interfaz que no estorba. La tecnología trabaja en segundo plano.',
   },
 ];
 
@@ -45,59 +75,107 @@ const LinkedinIcon = () => (
 
 export default function NosotrosPage() {
   return (
-    <div style={{ backgroundColor: '#0a0c10', color: '#f0f3f8', minHeight: '100vh' }}>
+    <div className="about-page">
       <Navbar activePage="nosotros" />
 
-      <div style={{ paddingTop: '6rem' }}>
-        <section style={{ paddingBottom: '4rem', textAlign: 'center', background: 'radial-gradient(circle at 50% 0%, rgba(230, 57, 70, 0.12) 0%, transparent 65%)' }}>
-          <div className="container">
-            <p style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', color: '#e63946', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              <span style={{ display: 'block', width: '24px', height: '2px', background: '#e63946' }} />
-              El equipo detrás de Rendertry
+      {/* HERO */}
+      <section className="about-hero">
+        <div className="container">
+          <p className="about-eyebrow">
+            <span className="about-eyebrow-line" />
+            <span data-scramble>El equipo detrás de Rendertry</span>
+          </p>
+          <h1 className="about-hero-title">
+            Construimos lo que nos hubiera gustado <span className="text-red">tener</span>
+          </h1>
+          <p className="about-hero-sub">
+            Tres desarrolladores del Bootcamp Talento Tech con la misma idea fija: poder ver cómo
+            queda un auto antes de gastar un peso en modificarlo.
+          </p>
+        </div>
+      </section>
+
+      {/* MISIÓN */}
+      <section className="about-mission">
+        <div className="container about-mission-grid">
+          <div className="about-mission-text">
+            <h2 className="about-h2">Por qué existe Rendertry</h2>
+            <p>
+              Cambiar de rines, color o un wrap es una decisión cara y difícil de imaginar. La foto
+              del catálogo nunca es tu auto, y el resultado real recién aparece cuando ya pagaste el
+              trabajo.
             </p>
-            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: '1.5rem', color: '#fff' }}>
-              CONOCE A LOS <span style={{ color: '#e63946' }}>CREADORES</span>
-            </h1>
-            <p style={{ color: '#9aa3b5', fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto', lineHeight: 1.7 }}>
-              Desarrolladores apasionados del Bootcamp Talento Tech uniendo fuerzas para crear la mejor herramienta de personalización automotriz impulsada por tecnología moderna.
+            <p>
+              Rendertry resuelve ese salto. Subes la foto de tu vehículo, eliges el producto y la IA
+              te muestra cómo quedaría sobre tu propio auto. La decisión deja de ser una apuesta.
             </p>
           </div>
-        </section>
+          <figure className="about-mission-media">
+            <img
+              src="/assets/porsche-showcase.jpg"
+              alt="Render de un Porsche personalizado con rines deportivos sobre la foto original"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="about-mission-tag">Render generado sobre la foto del vehículo</figcaption>
+          </figure>
+        </div>
+      </section>
 
-        <section style={{ paddingBottom: '8rem' }}>
-          <div className="container">
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center' }}>
-              {teamMembers.map((member) => (
-                <div key={member.name} className="team-card">
-                  <div className="team-avatar">
-                    <User size={44} style={{ color: '#e63946' }} />
-                  </div>
-                  <h4 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff', marginBottom: '0.25rem' }}>{member.name}</h4>
-                  <p style={{ color: '#e63946', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.25rem' }}>{member.role}</p>
-                  <p style={{ color: '#9aa3b5', fontSize: '0.875rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>{member.bio}</p>
-                  <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', marginTop: 'auto' }}>
-                    <a href={member.github} aria-label="GitHub" className="team-social">
-                      <GithubIcon />
-                    </a>
-                    <a href={member.linkedin} aria-label="LinkedIn" className="team-social">
-                      <LinkedinIcon />
-                    </a>
-                  </div>
+      {/* PILARES */}
+      <section className="about-pillars-section">
+        <div className="container">
+          <h2 className="sec-title">Cómo trabajamos</h2>
+          <div className="about-pillars">
+            {pillars.map(({ Icon, title, text }) => (
+              <article className="about-pillar" key={title}>
+                <span className="about-pillar-icon">
+                  <Icon size={22} strokeWidth={1.75} />
+                </span>
+                <h3 className="about-pillar-title">{title}</h3>
+                <p className="about-pillar-text">{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EQUIPO */}
+      <section className="about-team">
+        <div className="container">
+          <h2 className="sec-title">Quiénes lo hacen</h2>
+          <div className="team-grid">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="team-card">
+                <div className="team-avatar">
+                  <span className="team-initials">{member.initials}</span>
                 </div>
-              ))}
-            </div>
+                <h4 className="team-name">{member.name}</h4>
+                <p className="team-role">{member.role}</p>
+                <p className="team-bio">{member.bio}</p>
+                <div className="team-links">
+                  <a href={member.github} aria-label={`GitHub de ${member.name}`} className="team-social">
+                    <GithubIcon />
+                  </a>
+                  <a href={member.linkedin} aria-label={`LinkedIn de ${member.name}`} className="team-social">
+                    <LinkedinIcon />
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="cta-final" style={{ paddingTop: '6rem', paddingBottom: '6rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#fff', marginBottom: '1.5rem' }}>
-              ¿Listo para darle vida a tus proyectos?
-            </h2>
-            <a href="/demo" className="btn-primary btn-lg" data-scramble>Probar Rendertry ahora</a>
-          </div>
-        </section>
-      </div>
+      {/* CTA */}
+      <section className="cta-final about-cta">
+        <div className="cta-final-bg" />
+        <div className="container about-cta-content">
+          <h2 className="about-cta-title">Prueba tu próxima modificación antes de hacerla</h2>
+          <p className="about-cta-sub">Gratis y sin registro. La primera prueba toma menos de un minuto.</p>
+          <a href="/demo" className="btn-primary btn-lg" data-scramble>Probar Rendertry ahora</a>
+        </div>
+      </section>
 
       <Footer />
     </div>

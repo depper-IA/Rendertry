@@ -10,20 +10,20 @@ const STEPS = [
   {
     icon: Upload,
     n: 'PASO 01',
-    title: 'Subí tu foto',
-    text: 'Cargá una imagen de tu vehículo desde cualquier ángulo. Sin registro, sin fricción.',
+    title: 'Sube tu foto',
+    text: 'Carga una imagen de tu vehículo desde cualquier ángulo. Sin registro, sin fricción.',
   },
   {
     icon: Sparkles,
     n: 'PASO 02',
-    title: 'Elegí el estilo',
-    text: 'Seleccioná rines, wraps o pintura. Nuestra IA entiende la geometría real del auto.',
+    title: 'Elige el estilo',
+    text: 'Selecciona rines, wraps o pintura. Nuestra IA entiende la geometría real del auto.',
   },
   {
     icon: ImageIcon,
     n: 'PASO 03',
-    title: 'Visualizá el resultado',
-    text: 'En segundos obtenés un render fotorrealista listo para compartir o descargar.',
+    title: 'Visualiza el resultado',
+    text: 'En segundos obtienes un render fotorrealista listo para compartir o descargar.',
   },
 ];
 
@@ -37,7 +37,7 @@ const STATS = [
 const FEATURES = [
   { icon: Zap, title: 'Render instantáneo', text: 'Resultados en menos de 10 segundos' },
   { icon: Sparkles, title: 'IA fotorrealista', text: 'Entiende la geometría real del auto' },
-  { icon: ShieldCheck, title: 'Sin registro', text: 'Probalo gratis, sin crear cuenta' },
+  { icon: ShieldCheck, title: 'Sin registro', text: 'Pruébalo gratis, sin crear cuenta' },
 ];
 
 export default function DemoPage() {
@@ -110,10 +110,10 @@ export default function DemoPage() {
               <span data-scramble>IA Visual · Resultados Instantáneos</span>
             </div>
             <h1 className="demo-hero-title">
-              Personalizá tu <span className="demo-hero-accent">vehículo</span>
+              Personaliza tu <span className="demo-hero-accent">vehículo</span>
             </h1>
             <p className="demo-hero-sub">
-              Visualizá rines, pintura y wraps sobre la foto de tu auto. Sin registro. En segundos.
+              Visualiza rines, pintura y wraps sobre la foto de tu auto. Sin registro. En segundos.
             </p>
             <div className="demo-hero-actions">
               <a href="#widget-section" className="btn-primary btn-lg" data-scramble>Comenzar ahora</a>
@@ -141,10 +141,10 @@ export default function DemoPage() {
           <div className="dx-container">
             <div className="dx-studio">
               <aside className="dx-studio-aside dx-reveal">
-                <span className="dx-eyebrow"><span className="dx-eyebrow-dot" /><span data-scramble>Probalo ahora</span></span>
+                <span className="dx-eyebrow"><span className="dx-eyebrow-dot" /><span data-scramble>Pruébalo ahora</span></span>
                 <h2 className="dx-title">Tu auto, tu <span className="dx-accent">visión</span></h2>
                 <p className="dx-subtitle">
-                  Cargá una foto y dejá que la IA haga el resto. Render fotorrealista en tiempo real.
+                  Carga una foto y deja que la IA haga el resto. Render fotorrealista en tiempo real.
                 </p>
                 <ul className="dx-features">
                   {FEATURES.map((f) => {
@@ -205,7 +205,7 @@ export default function DemoPage() {
                 <span className="dx-eyebrow"><ShieldCheck size={13} /><span data-scramble>Prueba gratuita · 7 días</span></span>
                 <h2 className="dx-cta-title">¿Listo para tu taller?</h2>
                 <p className="dx-cta-sub">
-                  Integrá Rendertry en tu negocio y dejá que tus clientes visualicen antes de comprar.
+                  Integra Rendertry en tu negocio y deja que tus clientes visualicen antes de comprar.
                 </p>
                 <a href="/register" className="btn-primary btn-lg" data-scramble>Empezar gratis</a>
               </div>

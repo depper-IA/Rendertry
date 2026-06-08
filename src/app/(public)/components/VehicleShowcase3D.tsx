@@ -4,6 +4,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ScrambleLabel from '@/components/ScrambleLabel';
 import styles from './VehicleShowcase3D.module.css';
 
 interface ShowcaseCard {
@@ -17,7 +18,7 @@ interface ShowcaseCard {
 const CARDS: ShowcaseCard[] = [
   { src: '/wheelblend/aston-black-wheel.webp', name: 'Aston Martin Vanquish', tag: 'Rines forjados' },
   { src: '/assets/bugatti-veyron.jpg', name: 'Bugatti Veyron', tag: 'Rines personalizados' },
-  { src: '/assets/slider/porsche.jpg', name: 'Porsche Taycan', tag: 'Rines deportivos' },
+  { src: '/assets/porsche-showcase.jpg', name: 'Porsche Taycan', tag: 'Rines deportivos' },
   { src: '/assets/mustang-gt.jpg', name: 'Ford Mustang GT', tag: 'Rines negros' },
   { src: '/assets/bmw-i8.jpg', name: 'BMW i8', tag: 'Llantas aero' },
   { src: '/assets/mercedes-slk.jpg', name: 'Mercedes-Benz SLK', tag: 'Rines AMG' },
@@ -152,11 +153,11 @@ export default function VehicleShowcase3D() {
               tabIndex={i === active ? 0 : -1}
               aria-hidden={i !== active}
             >
-              <img src={card.src} alt={card.name} draggable={false} />
+              <img src={card.src} alt={card.name} draggable={false} loading="lazy" decoding="async" />
               <div className={styles.scanline} />
               <div className={styles.meta}>
                 <span className={styles.name}>{card.name}</span>
-                <span className={styles.tag}>{card.tag}</span>
+                <ScrambleLabel className={styles.tag} text={card.tag} play={i === active} />
               </div>
             </div>
           ))}

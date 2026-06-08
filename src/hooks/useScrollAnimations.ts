@@ -9,18 +9,9 @@ export function useScrollAnimations() {
 
       const q = (sel: string) => document.querySelector(sel);
 
-      if (q('.hero-badge')) {
-        animate('.hero-badge', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6 });
-      }
-      if (q('.gsap-3d-scroll-title')) {
-        animate('.gsap-3d-scroll-title', { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.1 });
-      }
-      if (q('.gsap-3d-scroll-subtitle')) {
-        animate('.gsap-3d-scroll-subtitle', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.2 });
-      }
-      if (q('.gsap-3d-scroll-actions')) {
-        animate('.gsap-3d-scroll-actions', { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.3 });
-      }
+      // NOTE: the hero (badge/title/subtitle/actions) is animated by
+      // GSAPHeroClient's own entrance (split-letter rise) — do NOT animate it
+      // here too, that conflicts and doubles the work.
 
       if (q('.steps-container')) {
         inView('.steps-container', () => {

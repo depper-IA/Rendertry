@@ -16,9 +16,42 @@ const companyLinks = [
   { href: '#', label: 'Privacidad' },
 ];
 
+// Big sliding wordmark across the top of the footer (k3-style text marquee).
+// Decorative repetition, so it's aria-hidden. Duplicated once for the seamless
+// -50% loop.
+const MARQUEE_PHRASES = [
+  'Tu auto, tu visión',
+  'Pruébalo gratis',
+  'Personaliza sin límites',
+  'Ve antes de invertir',
+  'Rines, pintura y wraps',
+  'Sin sorpresas en el taller',
+  'Resultados en segundos',
+  'Visualización con IA',
+  'Decisiones con confianza',
+  'Tu próxima modificación, hoy',
+];
+
+function FooterMarquee() {
+  const sequence = [...MARQUEE_PHRASES, ...MARQUEE_PHRASES];
+  return (
+    <div className="footer-marquee" aria-hidden="true">
+      <div className="footer-marquee-track">
+        {sequence.map((phrase, i) => (
+          <span className="footer-marquee-group" key={`${phrase}-${i}`}>
+            <span className="footer-marquee-item">{phrase}</span>
+            <span className="footer-marquee-sep" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="footer-pro">
+      <FooterMarquee />
       <div className="container">
         <div className="footer-top">
           <div className="row">

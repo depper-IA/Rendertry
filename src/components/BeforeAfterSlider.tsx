@@ -71,8 +71,29 @@ export default function BeforeAfterSlider({
         const sinVal = Math.min(Math.max((currentPct - 0.5) / 0.42, -0.999), 0.999);
         angle = Math.asin(sinVal);
       }
-      animFrameId = requestAnimationFrame(animate);
+      if (visible) {
+        animFrameId = requestAnimationFrame(animate);
+      } else {
+        running = false;
+      }
     };
+
+    // Only animate while the comparator is on screen (avoids a perpetual rAF
+    // + clipPath repaint loop running far down the page).
+    let visible = true;
+    let running = true;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && !running) {
+          running = true;
+          lastTimestamp = 0;
+          animFrameId = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 },
+    );
+    io.observe(wrapper);
 
     // Start animation loop
     animFrameId = requestAnimationFrame(animate);
@@ -124,6 +145,7 @@ export default function BeforeAfterSlider({
 
     return () => {
       cancelAnimationFrame(animFrameId);
+      io.disconnect();
       wrapper.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('mouseup', onMouseUp);

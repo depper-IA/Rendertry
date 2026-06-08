@@ -1,0 +1,34 @@
+# Rendertry
+
+> Rendertry es una plataforma que usa inteligencia artificial para visualizar la personalización de vehículos sobre la foto real del auto. Permite probar rines, pintura, wraps y accesorios en segundos, gratis y sin registro. Pensada para entusiastas, propietarios, talleres y negocios de rines en Colombia y Latinoamérica.
+
+## Qué hace
+
+- Cambio de rines: prueba modelos, tamaños y acabados de las principales marcas sobre tu vehículo.
+- Cambio de pintura: evalúa colores clásicos, mate, perla y cromado antes de pintar.
+- Wraps y vinilos: aplica diseños completos o parciales con distintas texturas y patrones.
+- Accesorios: agrega spoilers, detalles aerodinámicos y más.
+- Resultado descargable: exporta la imagen en alta resolución para compartir o llevar al taller.
+
+## Cómo funciona
+
+1. El usuario sube la foto de su vehículo.
+2. Elige el producto: rin, wrap o color.
+3. La IA genera el render y muestra el resultado para descargar o compartir.
+
+## Planes
+
+- Básico (gratis): 5 renders al mes, catálogo básico de rines, descarga en HD.
+- Pro ($49.900/mes): renders ilimitados, catálogo completo (+200 rines), descarga 4K sin marca de agua, wraps y accesorios, soporte prioritario.
+- Business ($149.900/mes): todo lo de Pro, hasta 10 usuarios, panel de gestión de clientes, acceso a API y soporte dedicado 24/7.
+
+## Páginas
+
+- [Inicio](https://rendertry.com/): visión general del producto y demo del flujo.
+- [Nosotros](https://rendertry.com/nosotros): equipo y propósito de Rendertry.
+- [Contacto](https://rendertry.com/contacto): canal para dudas y solicitud de demos (Cali, Colombia).
+
+## Contacto
+
+- Ubicación: Cali, Colombia
+- Sitio web: https://rendertry.com

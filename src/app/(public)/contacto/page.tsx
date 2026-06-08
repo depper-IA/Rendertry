@@ -21,7 +21,7 @@ export default function ContactoPage() {
             {/* Info Section */}
             <div className="contact-info">
               <h1>
-                Agenda tu <span style={{ color: 'var(--primary)' }}>Proyecto</span>
+                Agenda tu <span style={{ color: 'var(--primary)' }} data-scramble>Proyecto</span>
               </h1>
               <p>
                 Transformamos visiones en máquinas de alto rendimiento. Ponte en contacto con nuestro equipo técnico para
@@ -33,7 +33,7 @@ export default function ContactoPage() {
                   <MapPin size={22} />
                 </div>
                 <div className="info-text">
-                  <h4>Ubicación</h4>
+                  <h4 data-scramble>Ubicación</h4>
                   <p>Cali - Colombia</p>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export default function ContactoPage() {
                   <Phone size={22} />
                 </div>
                 <div className="info-text">
-                  <h4>Teléfono Directo</h4>
+                  <h4 data-scramble>Teléfono Directo</h4>
                   <p>+57 3105436281</p>
                 </div>
               </div>
